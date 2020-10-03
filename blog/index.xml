@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Felix' Blog</title><link>https://felixbenning.github.io/blog/</link><description>Recent content in Blogs on Felix' Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://felixbenning.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Concise Philosophy</title><link>https://felixbenning.github.io/blog/two-cents/concise_philosopy/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/two-cents/concise_philosopy/</guid><description>&lt;p>Before we begin, I should note that certain things simply seem impossible.
+You can not reason whether logic makes sense using logic. So I will not even
+try. We will see shortly that I find some other things to be impossible.
+Being trained in mathematics, I do not find that too unusual. While I think
+that my belief system turned out to be remarkable consistent and did not
+really encounter any problems in the last few years, I would be stupid to
+think I have discovered an absolute truth. But since the contrary is
+grammatically unwieldy, I will present my thoughts as such.&lt;/p></description></item><item><title>Zero vs One-based Indexing</title><link>https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/</guid><description>&lt;h2 id="it-is-only-about-pointers">&amp;ldquo;It is only about pointers&amp;rdquo;&lt;/h2>
+&lt;p>Proponents of counting from 1 often think that this is about pointers and
+claim that it only makes sense for computer scientist as accessing an element
+from an array on hardware translates to addition to the pointer which means
+that the first element is at 0. They then like to argue that an index from 1
+would make more sense in maths and &amp;ldquo;for counting&amp;rdquo;.&lt;/p>
+&lt;p>I will try to explain why this is not the case.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,109 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=HandheldFriendly content="True"><meta http-equiv=x-ua-compatible content="IE=edge"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=generator content="Hugo 0.75.1"><link rel="shortcut icon" href=https://cdn.jsdelivr.net/gh/amzrk2/cdn-stcapi@1/favicons/favicon.ico><title>Zero vs One-based Indexing - Felix' Blog</title><meta name=author content="Felix Benning"><meta name=description content="A Blog by Felix Benning"><meta name=keywords content="programming"><meta property="og:title" content="Zero vs One-based Indexing"><meta property="og:description" content="&ldquo;It is only about pointers&rdquo;
+Proponents of counting from 1 often think that this is about pointers and
+claim that it only makes sense for computer scientist as accessing an element
+from an array on hardware translates to addition to the pointer which means
+that the first element is at 0. They then like to argue that an index from 1
+would make more sense in maths and &ldquo;for counting&rdquo;.
+I will try to explain why this is not the case."><meta property="og:type" content="article"><meta property="og:url" content="https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/"><meta property="og:image" content="https://felixbenning.github.io/img/og.png"><meta property="article:published_time" content="2020-10-03T00:00:00+00:00"><meta property="article:modified_time" content="2020-10-03T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://felixbenning.github.io/img/og.png"><meta name=twitter:title content="Zero vs One-based Indexing"><meta name=twitter:description content="&ldquo;It is only about pointers&rdquo;
+Proponents of counting from 1 often think that this is about pointers and
+claim that it only makes sense for computer scientist as accessing an element
+from an array on hardware translates to addition to the pointer which means
+that the first element is at 0. They then like to argue that an index from 1
+would make more sense in maths and &ldquo;for counting&rdquo;.
+I will try to explain why this is not the case."><style>@media(prefers-color-scheme:dark){body[data-theme=auto] img{filter:brightness(60%)}}body[data-theme=dark] img{filter:brightness(60%)}</style><link rel=stylesheet href=https://felixbenning.github.io/assets/css/fuji.min.css></head><body data-theme=auto><script data-cfasync=false>var fujiThemeData=localStorage.getItem('fuji_data-theme');if(!fujiThemeData){localStorage.setItem('fuji_data-theme','auto');}else{if(fujiThemeData!=='auto'){document.body.setAttribute('data-theme',fujiThemeData==='dark'?'dark':'light');}}</script><header><div class="container-lg clearfix"><div class="col-12 header"><a class=title-main href=https://felixbenning.github.io/>Felix' Blog</a>
+<span class=title-sub>Talking about Fixed Cost</span></div></div></header><main><div class="container-lg clearfix"><div class="col-12 col-md-9 float-left content"><article><h2 class="post-item post-title"><a href=https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/>Zero vs One-based Indexing</a></h2><div class="post-item post-meta"><span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-03</span><span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1414 words</span><span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href=/tags/programming>programming</a>&nbsp;</span></div><div class="post-content markdown-body"><h2 id=it-is-only-about-pointers>&ldquo;It is only about pointers&rdquo;</h2><p>Proponents of counting from 1 often think that this is about pointers and
+claim that it only makes sense for computer scientist as accessing an element
+from an array on hardware translates to addition to the pointer which means
+that the first element is at 0. They then like to argue that an index from 1
+would make more sense in maths and &ldquo;for counting&rdquo;.</p><p>I will try to explain why this is not the case.</p><h2 id=use-cases>Use cases</h2><p>For that we first have to consider how indices are used and which parts might
+result in mistakes. And the following observation is quite important for that</p><blockquote><p>People rarely if ever want to have a particular element from a list.
+Almost all algorithms either <strong>iterate</strong> through through the entire list,
+access <strong>slices</strong> of the list or <strong>search</strong> for a particular element.</p></blockquote><p>So let us consider these use cases.</p><ol><li><p>If you want to <strong>search</strong> for an element you never see the index anyway.
+You might say something like</p><pre><code class=language-python>idx = my_list.index(my_element)
+
+# use idx in code
+</code></pre><p>In that case you do not care whether the index starts from 0 or 1 as you never
+<em>see</em> the index anyway.</p></li><li><p>If you want to <strong>iterate</strong> through the list, you should not have to be concerned
+with indices either as modern languages all the <code>in</code> operator which yields all
+the elements of an iterable one by one.</p><pre><code class=language-python>for element in my_list:
+    pass
+    # do something with element
+</code></pre></li></ol><h2 id=slicing>Slicing</h2><p>As you might guess from the header I consider slicing to be the only case where
+you actually have to think about indices. So let us think of some use cases.</p><ol><li>access the first <code>n</code> elements of a list</li><li>access the last <code>n</code> elements of a list</li><li>create <code>n</code> sized chunks (and a residual)</li><li>get the <code>column</code> and <code>row</code> of a <code>n x m</code> matrix encoded as a vector of length <code>nm</code></li></ol><h3 id=1-accessing-the-first-n-elements>1. Accessing the first <code>n</code> elements</h3><p>So how could we get the first <code>n</code> elements in a 1 based vector? Well we would like</p><pre><code class=language-python>l[1:n]
+</code></pre><p>or</p><pre><code class=language-python>l[:n]
+</code></pre><p>and we can define it like this. But this also means that</p><pre><code class=language-python>l[a:b] = [l[a], ...,l[b]]
+</code></pre><p>and thus</p><pre><code class=language-python>len(l[a:b]) == b - a +1
+</code></pre><p>and we will see that this becomes a sore thumb in our third task.</p><p>So what is the alternative? Half open intervals! Python&rsquo;s <code>0</code> based indexing
+defines slices like this</p><pre><code class=language-python>l[a:b] = [l[a],...,l[b-1]]
+</code></pre><p>thus we get</p><pre><code class=language-python>( len(l[a:b]) == b-a ) and ( len(l[:n]) == n )
+</code></pre><h3 id=2-accessing-the-last-n-elements>2. Accessing the last <code>n</code> elements</h3><p>So how can we access the last <code>n</code> elements? Well let us first consider how to
+access the last element. If we use <code>1</code> based indexing with closed intervals
+it would be</p><pre><code class=language-python>l[len(l)]
+</code></pre><p>so you might get the last n elements with</p><pre><code class=language-python>l[len(l)-n:]
+</code></pre><p>Did you spot the bug? Remember <code>len(l[a:b]) == b-a +1</code>!
+So we actually have to write</p><pre><code class=language-python>l[len(l)+1-n:]
+</code></pre><p>So how does <code>0</code>-based indexing do? Not only can you write</p><pre><code class=language-python>l[len(l)-n:]
+</code></pre><p>in <code>0</code> based indexing, you can be even more brief by realizing that</p><pre><code class=language-python>if n &lt; len(l):
+    len(l) - n == (-n) % len(l)
+</code></pre><p>in words: we can use modulo calculations to wrap around negative numbers.
+We could even allow arbitrary numbers to never be out of range with</p><pre><code class=language-python>l[n % len(l)]
+</code></pre><p>But out of bounds errors are sometimes quite helpful. So python only allows this
+for negative numbers larger than <code>-len(l)</code>.</p><p>In particular you can access the last element with <code>l[-1]</code> and the last <code>n</code>
+elements with</p><pre><code class=language-python>l[-n:]
+</code></pre><p>Now you <em>could</em> do something similar in <code>1</code> based indexing, just that you do
+not have the beautiful modulo based (wrapping around) explanation as you skip zero.
+And you would end up with</p><pre><code class=language-python>l[-len(l):]
+</code></pre><p>resulting in an out of bounds error, while this is perfectly valid in python.</p><h3 id=3-create-n-sized-chunks-and-a-residual>3. create n sized chunks (and a residual)</h3><p>this is probably the most prevalent operations (e.g. converting vectors into matrices,
+splitting an array up into chunks for parallel processing, etc.)</p><p>So how does a <code>0</code> based algorithm look?</p><pre><code class=language-python>slices = [ l[a:a+n] for a in range(len(l)/n) ]
+residual = l[-(n % len(l)):]
+</code></pre><p>generates a list of <code>n</code> sized slices of <code>l</code> and the residual. So how would the
+same list comprehension look in <code>1</code> based indexing?</p><pre><code class=language-python>slices = [ l[a:a+n-1] for a in range(len(l)/n) ]
+residual = l[ len(l) - (n % len(l)) +1:]
+</code></pre><p>not only do you now have off-by one cases. In one case you have to subtract while
+you have to add if you count from the end. You are bound to mess that up on your
+first try if you do not carefully think about it.</p><h3 id=4-get-the-column-and-row-of-a-n-x-m-matrix-encoded-as-a-vector-of-length-nm>4. get the column and row of a n x m matrix encoded as a vector of length nm</h3><p>this is not even a battle, lets say we are row-major</p><p><code>0</code> based:</p><pre><code class=language-python>column = idx / m
+row = idx % m
+</code></pre><p><code>1</code> based:</p><pre><code class=language-python>column = (idx - 1) / m +1
+row = (idx - 1) % m +1
+</code></pre><p>let us take a victory lap and convert a <code>(column, row)</code> tuple back into an index</p><p><code>0</code> based:</p><pre><code class=language-python>idx = column * m + row
+</code></pre><p><code>1</code> based:</p><pre><code class=language-python>idx = (column -1) * m + row
+</code></pre><h2 id=additional-benefits-of-0-based-indexing>Additional benefits of 0 based indexing</h2><p>It is often the case that you have some sort of &ldquo;special&rdquo; column. E.g. the
+&ldquo;bias&rdquo; or &ldquo;intercept&rdquo; in machine learning / statistics. In 0 based indexing, the
+0th index naturally becomes this special column, and the <code>n</code>-th real attribute
+naturally maps to the index <code>n</code>.</p><h2 id=exceptions>Exceptions</h2><p>There are probably a few exceptions to the rule &ldquo;you will never want to access
+a particular index&rdquo;. While you will almost always iterate through the entire
+thing, I can think of at least one example where you might want to access a
+specific index. But it is also the only example I can think of. And since you
+only have to access a single index, the mental overhead for conversion is not as
+critical as when you have to deal with slices of (multidimensional) matrices.</p><p>This example I can think of is quantiles. If you want to access the median for
+example, you would first sort the list, and then obtain the index in the center.
+If &ldquo;the center&rdquo; exists. More generally, if you want to have the q-quantile.
+You would want to have the <code>floor(len(l)/q)</code>-th and <code>ceil(len(l)/q)</code>-th element
+and linearly combine them to obtain an approximation of the q-quantile.</p><p>and if you use 0 based indexing you will have to shift the index down by one.
+Annoying but not quite as bad as the erratic plus/minus ones you have to deal
+with in 1 based indexing.</p><h2 id=summary>Summary</h2><p>When accessing a particular index, 1 based indexing might make sense. But not
+only is that a relatively simple operations where you can deal with the additional
+mental overhead of an index shift. It is also a relatively rare operation.</p><p>When it comes to slices, 0 based indexing with half open intervals is
+significantly easier to deal with than 1 based indexing with closed intervals.
+Arguably half open intervals are more important than 0 based indexing.
+Now you could of course do half open slices with 1 based indexing, but then you
+either have to accept that the first <code>n</code> elements are</p><pre><code class=language-python>l[:n+1]
+</code></pre><p>or you could have intervals which are open on the <em>left</em> side. In other words:</p><pre><code class=language-python>l[a:b] = [l[a+1],...,l[b]]
+</code></pre><p>note that this is equivalent to switching to 0 based indexing for slicing (with half open
+intervals on the right).</p><p><a href=https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html target=_blank>Dijkstra</a>
+argues that it is really unintuitive to have a slice start with a lower number
+than the first index</p><pre><code class=language-python>l[:n] = l[0:n] = [l[1],...,l[n]]
+</code></pre><p>but I don&rsquo;t think it is that much worse than half open intervals on the other side.
+It is definitely an improvement over closed intervals.</p><p>But what <em>is</em> a direct result of 0 based indexing, is that modulo calculus becomes
+<em>significantly</em> easier (see fourth example) and the residual in the third
+example. And I would say that the situations where you need to use modulo
+calculus on indices are not only more frequent than the situations where you
+need to access a particular index, but they are also more mentally taxing which
+means that you have less mental capacity to deal with index shenanigans.</p><p>And from a practical perspective: writing programs as a student in R resulted in
+numerous off-by-one errors. Now I am mostly writing Python, and I can not recall
+the last time I had off-by-one issues.</p></div></article></div><aside class="col-12 col-md-3 float-left sidebar"><div class="sidebar-item sidebar-pages"><h3>Pages</h3><ul><li><a href=/archives/>Archives</a></li><li><a href=/about/>About</a></li><li><a href=/search/>Search</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>Links</h3><ul><li><a href=https://github.com/FelixBenning target=_blank><span>GitHub</span></a></li><li><a href=mailto:Felix.Benning@gmail.com target=_blank><span>Email</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>Tags</h3><div><span><a href=/tags/philosophy/>philosophy</a></span>
+<span><a href=/tags/programming/>programming</a></span>
+<span><a href=/tags/two-cents/>two-cents</a></span></div></div><div class="sidebar-item sidebar-toc"><h3>TOC</h3><nav id=TableOfContents><ul><li><a href=#it-is-only-about-pointers>&ldquo;It is only about pointers&rdquo;</a></li><li><a href=#use-cases>Use cases</a></li><li><a href=#slicing>Slicing</a><ul><li><a href=#1-accessing-the-first-n-elements>1. Accessing the first <code>n</code> elements</a></li><li><a href=#2-accessing-the-last-n-elements>2. Accessing the last <code>n</code> elements</a></li><li><a href=#3-create-n-sized-chunks-and-a-residual>3. create n sized chunks (and a residual)</a></li><li><a href=#4-get-the-column-and-row-of-a-n-x-m-matrix-encoded-as-a-vector-of-length-nm>4. get the column and row of a n x m matrix encoded as a vector of length nm</a></li></ul></li><li><a href=#additional-benefits-of-0-based-indexing>Additional benefits of 0 based indexing</a></li><li><a href=#exceptions>Exceptions</a></li><li><a href=#summary>Summary</a></li></ul></nav></div></aside></div><div class=btn><div class=btn-menu id=btn-menu><i class="iconfont icon-grid-sharp"></i></div><div class=btn-toggle-mode><i class="iconfont icon-contrast-sharp"></i></div><div class=btn-scroll-top><i class="iconfont icon-chevron-up-circle-sharp"></i></div></div><aside class=sidebar-mobile style=display:none><div class=sidebar-wrapper><div class="sidebar-item sidebar-pages"><h3>Pages</h3><ul><li><a href=/archives/>Archives</a></li><li><a href=/about/>About</a></li><li><a href=/search/>Search</a></li></ul></div><div class="sidebar-item sidebar-links"><h3>Links</h3><ul><li><a href=https://github.com/FelixBenning target=_blank><span>GitHub</span></a></li><li><a href=mailto:Felix.Benning@gmail.com target=_blank><span>Email</span></a></li></ul></div><div class="sidebar-item sidebar-tags"><h3>Tags</h3><div><span><a href=/tags/philosophy/>philosophy</a></span>
+<span><a href=/tags/programming/>programming</a></span>
+<span><a href=/tags/two-cents/>two-cents</a></span></div></div><div class="sidebar-item sidebar-toc"><h3>TOC</h3><nav id=TableOfContents><ul><li><a href=#it-is-only-about-pointers>&ldquo;It is only about pointers&rdquo;</a></li><li><a href=#use-cases>Use cases</a></li><li><a href=#slicing>Slicing</a><ul><li><a href=#1-accessing-the-first-n-elements>1. Accessing the first <code>n</code> elements</a></li><li><a href=#2-accessing-the-last-n-elements>2. Accessing the last <code>n</code> elements</a></li><li><a href=#3-create-n-sized-chunks-and-a-residual>3. create n sized chunks (and a residual)</a></li><li><a href=#4-get-the-column-and-row-of-a-n-x-m-matrix-encoded-as-a-vector-of-length-nm>4. get the column and row of a n x m matrix encoded as a vector of length nm</a></li></ul></li><li><a href=#additional-benefits-of-0-based-indexing>Additional benefits of 0 based indexing</a></li><li><a href=#exceptions>Exceptions</a></li><li><a href=#summary>Summary</a></li></ul></nav></div></div></aside></main><footer><div class="container-lg clearfix"><div class="col-12 footer"><span>&copy; 2020 <a href=https://felixbenning.github.io/>Felix Benning</a> |
+Powered by <a href=https://github.com/amzrk2/hugo-theme-fuji/ target=_blank>Fuji-v2</a> & <a href=https://gohugo.io/ target=_blank>Hugo</a></span></div></div></footer><script defer src=https://cdn.jsdelivr.net/combine/npm/medium-zoom@1.0.6,npm/lazysizes@5.2.2></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.21.0/components/prism-core.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.21.0/plugins/autoloader/prism-autoloader.min.js></script><script defer src=/assets/js/fuji.min.js></script></body></html>
