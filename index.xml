@@ -19,14 +19,18 @@ colors&amp;rdquo;. Even though we only have a finite number of words for them.&l
 &lt;p>Every economic system is fundamentally an allocation algorithm. Somehow it
 must be decided what is produced, and who can use/consume that. An economic
 system is the “recipe” (algorithm) for making this decision. If you specify
-such an algorithm, you can make statements about the result.&lt;/p></description></item><item><title>Concise Philosophy</title><link>https://felixbenning.github.io/blog/two-cents/concise_philosopy/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/two-cents/concise_philosopy/</guid><description>&lt;p>Before we begin, I should note that certain things simply seem impossible.
-You can not reason whether logic makes sense using logic. So I will not even
-try. We will see shortly that I find some other things to be impossible.
-Being trained in mathematics, I do not find that too unusual. While I think
-that my belief system turns out to be remarkable consistent and did not
-really encounter any problems in the last few years, I would be stupid to
-think I have discovered an absolute truth. But since the contrary is
-grammatically unwieldy, I will present my thoughts as such.&lt;/p></description></item><item><title>Zero vs One-based Indexing</title><link>https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/</guid><description>&lt;h2 id="it-is-only-about-pointers">&amp;ldquo;It is only about pointers&amp;rdquo;&lt;/h2>
+such an algorithm, you can make statements about the result.&lt;/p></description></item><item><title>Concise Philosophy</title><link>https://felixbenning.github.io/blog/two-cents/concise_philosopy/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/two-cents/concise_philosopy/</guid><description>&lt;h2 id="what-is">What is?&lt;/h2>
+&lt;blockquote>
+&lt;p>I think, therefore I am - &lt;em>Descartes&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;p>We can be sure that something exists which does the thinking. You might
+now argue that abstract things like language and mathematics exist. Since a
+version of them can be part of your consciousness, which exists. But beyond
+that nothing concrete needs to exist, as thought experiments like &lt;a href="https://en.wikipedia.org/wiki/Brain_in_a_vat" target="_blank">Brain in a
+vat&lt;/a> or &lt;a href="https://en.wikipedia.org/wiki/Boltzmann_brain" target="_blank">Boltzmann
+Brains&lt;/a>
+prove (as they are not falsifiable you can not prove you are &lt;em>not&lt;/em> one
+of those, so therefore you can not prove that anything concrete &lt;em>must&lt;/em> exist).&lt;/p></description></item><item><title>Zero vs One-based Indexing</title><link>https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/</guid><description>&lt;h2 id="it-is-only-about-pointers">&amp;ldquo;It is only about pointers&amp;rdquo;&lt;/h2>
 &lt;p>Proponents of counting from 1 often think that this is about pointers and
 claim that it only makes sense for computer scientist as accessing an element
 from an array on hardware translates to addition to the pointer which means
