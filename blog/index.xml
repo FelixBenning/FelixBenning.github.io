@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Felix' Blog</title><link>https://felixbenning.github.io/blog/</link><description>Recent content in Blogs on Felix' Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 23 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://felixbenning.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Smart Quotas</title><link>https://felixbenning.github.io/blog/two-cents/smart-quota/</link><pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/two-cents/smart-quota/</guid><description>&lt;p>While equal rights could be viewed as an issue of the past (at least in most
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Felix' Blog</title><link>https://felixbenning.github.io/blog/</link><description>Recent content in Blogs on Felix' Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 22 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://felixbenning.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Smart Quotas</title><link>https://felixbenning.github.io/blog/two-cents/smart-quota/</link><pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/two-cents/smart-quota/</guid><description>&lt;p>While equal rights could be viewed as an issue of the past (at least in most
 developed countries), equal opportunity is still an open issue. In a free
 market wages and hiring decisions are not up to the law and thus equal rights
 are not enough to guarantee equal opportunity. While wages for equal work can
@@ -62,10 +62,4 @@ higher level programming.&lt;/p>
 a convincing argument for their preference (&lt;a href="#5-ranges">Dijkstra&amp;rsquo;s range
 argument&lt;/a> aside). To remedy this, I am going to present 5 arguments
 for 0-based indexing and address the intuition argument of 1-based
-indexing.&lt;/p></description></item><item><title>Zero vs One-based Indexing</title><link>https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://felixbenning.github.io/blog/programming/0_vs_1_based_indexing/</guid><description>&lt;h2 id="it-is-only-about-pointers">&amp;ldquo;It is only about pointers&amp;rdquo;&lt;/h2>
-&lt;p>Proponents of counting from 1 often think that this is about pointers and
-claim that it only makes sense for computer scientist as accessing an element
-from an array on hardware translates to addition to the pointer which means
-that the first element is at 0. They then like to argue that an index from 1
-would make more sense in maths and &amp;ldquo;for counting&amp;rdquo;.&lt;/p>
-&lt;p>I will try to explain why this is not the case.&lt;/p></description></item></channel></rss>
+indexing.&lt;/p></description></item></channel></rss>
