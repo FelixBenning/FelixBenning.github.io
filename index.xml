@@ -52,7 +52,7 @@ that nothing concrete needs to exist, as thought experiments like &lt;a href="ht
 vat&lt;/a> or &lt;a href="https://en.wikipedia.org/wiki/Boltzmann_brain" target="_blank">Boltzmann
 Brains&lt;/a>
 prove (as they are not falsifiable you can not prove you are &lt;em>not&lt;/em> one
-of those, so therefore you can not prove that anything concrete &lt;em>must&lt;/em> exist).&lt;/p></description></item><item><title>Intuitive Indexing</title><link>https://www.unassuming.page/blog/programming/intuitive-indexing/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://www.unassuming.page/blog/programming/intuitive-indexing/</guid><description>&lt;p>While most programming languages use 0-based indexing. &lt;a href="https://hisham.hm/2021/01/18/again-on-0-based-vs-1-based-indexing/" target="_blank">Some people are not
+of those, so therefore you can not prove that anything concrete &lt;em>must&lt;/em> exist).&lt;/p></description></item><item><title>Intuitive Indexing</title><link>https://www.unassuming.page/blog/programming/intuitive-indexing/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://www.unassuming.page/blog/programming/intuitive-indexing/</guid><description>&lt;p>While most programming languages use 0-based indexing &lt;a href="https://hisham.hm/2021/01/18/again-on-0-based-vs-1-based-indexing/" target="_blank">some people are not
 convinced&lt;/a> that this is a good thing and not just the legacy of
 the language C. They argue that starting to index with one is more &lt;em>intuitive&lt;/em>
 than starting to index with zero, and that there is no good reason to use
