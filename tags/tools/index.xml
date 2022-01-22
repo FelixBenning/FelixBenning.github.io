@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>tools on unAssuming</title><link>https://www.unassuming.page/tags/tools/</link><description>Recent content in tools on unAssuming</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 22 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/tags/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>Bayes Helper</title><link>https://www.unassuming.page/blog/tools/bayes-helper/</link><pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate><guid>https://www.unassuming.page/blog/tools/bayes-helper/</guid><description>
+If you use a test with 95% sensitivity and 95% specificity, and it is positive
+then you are surly more likely sick than not, right? Well, ... it depends.
+On the prior probability to be sick (or incidence rate) to be precise. And
+humans are really bad assessing the meaning of a test result.</description></item></channel></rss>
