@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>education on unAssuming</title>
+    <link>https://www.unassuming.page/tags/education/</link>
+    <description>Recent content in education on unAssuming</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/tags/education/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microeconomics 101</title>
+      <link>https://www.unassuming.page/blog/economics/micro_economics/</link>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/economics/micro_economics/</guid>
+      <description>    The following introduction to microeconomics is how I think introductory lectures should be structured. In particular we are going to avoid taking money for granted and try to arrive at money as a result rather than use it as an axiom. The justification for this is sometimes tacked on later using Edgeworth boxes. But these assume fixed endowments. Even General Equilibrium Theory unnecessarily assumes there are consumers and firms     </description>
+    </item>
+    
+    <item>
+      <title>Why Disease Spreads Exponentially</title>
+      <link>https://www.unassuming.page/blog/mathematics/why-disease-spreads-exponentially/</link>
+      <pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/why-disease-spreads-exponentially/</guid>
+      <description>&lt;p&gt;If there is one thing this pandemic has taught us, then it is that few people
+truly understand exponential growth. This post is an attempt to explore this
+magical function with minimal prerequisites.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Probability</title>
+      <link>https://www.unassuming.page/blog/mathematics/probability/</link>
+      <pubDate>Thu, 20 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/probability/</guid>
+      <description>&lt;p&gt;Probability theory is best understood through the lense of &amp;ldquo;the &lt;strong&gt;expected
+value&lt;/strong&gt;&amp;rdquo;. We are fundamentally trying to understand what we can expect so
+the expected value is a great place to start&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Little Exposition</title>
+      <link>https://www.unassuming.page/blog/mathematics/little-exposition/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/little-exposition/</guid>
+      <description>&lt;p&gt;Small mathematical explanations&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Matrix Multiplication</title>
+      <link>https://www.unassuming.page/blog/mathematics/little-exposition/matrix-multiplication/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/little-exposition/matrix-multiplication/</guid>
+      <description>&lt;p&gt;Linear functions &lt;em&gt;define&lt;/em&gt; matrix multiplication and make matrices and linear
+functions effectively interchangeable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Taylor Approximation</title>
+      <link>https://www.unassuming.page/blog/mathematics/little-exposition/taylor-approximation/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/little-exposition/taylor-approximation/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s say we want to approximate a function $f$. In an
+area around $a$ the value $f(a)$ is probably a decent approximation
+for $f(x)$.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>pq-Formula</title>
+      <link>https://www.unassuming.page/blog/mathematics/little-exposition/pq-formula/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/little-exposition/pq-formula/</guid>
+      <description>&lt;p&gt;We want to find $a_1$ and $a_2$ using only $p$ and $q$&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Utility</title>
+      <link>https://www.unassuming.page/blog/utility/</link>
+      <pubDate>Tue, 15 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/utility/</guid>
+      <description>&lt;p&gt;Everyone has preferences. In some sense it defines what being alive means and
+I tend to &lt;a href=&#34;https://www.unassuming.page/blog/two-cents/concise_philosophy/&#34;&gt;view preferences as axioms&lt;/a&gt;.
+They are also treated as axioms in economics. But what are preferences?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Economics 101</title>
+      <link>https://www.unassuming.page/blog/economics/economics_101/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/economics/economics_101/</guid>
+      <description>Utility Everyone has preferences. In some sense it defines what being alive means and I tend to view preferences as axioms. They are also treated as axioms in economics. But what are preferences?
+Formally preferences are a binary relation on the set of possible world states. The greater or equal symbol &amp;ldquo;≥&amp;rdquo; is such a binary relation for example and a good intuition for what we are getting at. We then make certain assumptions about this relation:
+  First of all we assume connexity (also called &amp;ldquo;completeness&amp;rdquo;). This just means that we can compare any two world states, which means that for any two world states A and B, we either &amp;ldquo;weakly prefer A over B&amp;rdquo; (A ≿ B) or we &amp;ldquo;weakly prefer B over A&amp;rdquo; or both.</description>
+    </item>
+    
+    <item>
+      <title>Categorizing Financial Instruments</title>
+      <link>https://www.unassuming.page/blog/economics/categorizing_financial_instruments/</link>
+      <pubDate>Wed, 14 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/economics/categorizing_financial_instruments/</guid>
+      <description>&lt;p&gt;This article is supposed to be a crash course in financial markets.
+Discussing the most important financial instruments with their intended usage
+and some of their unintended usage.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

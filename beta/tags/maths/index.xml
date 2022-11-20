@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>maths on unAssuming</title>
+    <link>https://www.unassuming.page/tags/maths/</link>
+    <description>Recent content in maths on unAssuming</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 03 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/tags/maths/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programming in Lean</title>
+      <link>https://www.unassuming.page/blog/programming/programming-in-lean/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/programming/programming-in-lean/</guid>
+      <description>&lt;p&gt;Lean is quite a bit different from other programming languages. People familiar
+with Haskell (or other functional programming languages) might be a bit more
+comfortable  from the get go, but if you do not have that background there are
+a couple of stumbling blocks you might encounter. So I thought I would point
+out some of the gotchas I sumbled over learning this.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Proof Assistants for Typesetting Maths</title>
+      <link>https://www.unassuming.page/blog/mathematics/proof_asssistants_for_typesetting_maths/</link>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/proof_asssistants_for_typesetting_maths/</guid>
+      <description>I am currently trying make our exercise sheets HTML based to allow for things like drop down solutions, which start in a collapsed state. I ended up asking myself whether it might be possible yet to verify proofs submitted by students automatically. So I looked for Proof Assistants and ended up with lean. In particular I tried out the Natural Numbers Game and started reading Theorem Proving in Lean for a more comprehensive introduction.
+Landmark based Maths vs Steps in Proof Assistants The first contrast I noticed was the following. When you write down Maths for another human, you tend to write something like:</description>
+    </item>
+    
+    <item>
+      <title>Bayes Helper</title>
+      <link>https://www.unassuming.page/blog/tools/bayes-helper/</link>
+      <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/tools/bayes-helper/</guid>
+      <description>
+If you use a test with 95% sensitivity and 95% specificity, and it is positive
+then you are surly more likely sick than not, right? Well, ... it depends.
+On the prior probability to be sick (or prevalence) to be precise. And
+humans are really bad assessing the meaning of a test result.
+
+</description>
+    </item>
+    
+    <item>
+      <title>Why Disease Spreads Exponentially</title>
+      <link>https://www.unassuming.page/blog/mathematics/why-disease-spreads-exponentially/</link>
+      <pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/why-disease-spreads-exponentially/</guid>
+      <description>&lt;p&gt;If there is one thing this pandemic has taught us, then it is that few people
+truly understand exponential growth. This post is an attempt to explore this
+magical function with minimal prerequisites.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Probability</title>
+      <link>https://www.unassuming.page/blog/mathematics/probability/</link>
+      <pubDate>Thu, 20 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/probability/</guid>
+      <description>&lt;p&gt;Probability theory is best understood through the lense of &amp;ldquo;the &lt;strong&gt;expected
+value&lt;/strong&gt;&amp;rdquo;. We are fundamentally trying to understand what we can expect so
+the expected value is a great place to start&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Little Exposition</title>
+      <link>https://www.unassuming.page/blog/mathematics/little-exposition/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/little-exposition/</guid>
+      <description>&lt;p&gt;Small mathematical explanations&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Matrix Multiplication</title>
+      <link>https://www.unassuming.page/blog/mathematics/little-exposition/matrix-multiplication/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/little-exposition/matrix-multiplication/</guid>
+      <description>&lt;p&gt;Linear functions &lt;em&gt;define&lt;/em&gt; matrix multiplication and make matrices and linear
+functions effectively interchangeable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Taylor Approximation</title>
+      <link>https://www.unassuming.page/blog/mathematics/little-exposition/taylor-approximation/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/little-exposition/taylor-approximation/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s say we want to approximate a function $f$. In an
+area around $a$ the value $f(a)$ is probably a decent approximation
+for $f(x)$.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>pq-Formula</title>
+      <link>https://www.unassuming.page/blog/mathematics/little-exposition/pq-formula/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/little-exposition/pq-formula/</guid>
+      <description>&lt;p&gt;We want to find $a_1$ and $a_2$ using only $p$ and $q$&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Intuitive Indexing</title>
+      <link>https://www.unassuming.page/blog/programming/intuitive-indexing/</link>
+      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/programming/intuitive-indexing/</guid>
+      <description>&lt;p&gt;While most programming languages use 0-based indexing &lt;a href=&#34;https://hisham.hm/2021/01/18/again-on-0-based-vs-1-based-indexing/&#34; target=&#34;_blank&#34;&gt;some people are not
+convinced&lt;/a&gt; that this is a good thing and not just the legacy of
+the language C. They argue that starting to index with one is more &lt;em&gt;intuitive&lt;/em&gt;
+than starting to index with zero, and that there is no good reason to use
+0-based indices besides pointer arithmetic which should not be of concern to
+higher level programming.&lt;/p&gt;
+&lt;p&gt;And to be fair, proponents of zero based indexing have mostly failed to provide
+a convincing argument for their preference (&lt;a href=&#34;#5-ranges&#34;&gt;Dijkstra&amp;rsquo;s range
+argument&lt;/a&gt; aside). To remedy this, I am going to present 5 arguments
+for 0-based indexing and address the intuition argument of 1-based
+indexing.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

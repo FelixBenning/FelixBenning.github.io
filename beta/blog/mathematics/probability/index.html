@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.75.1" />
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
+
+
+
+<title>Introduction to Probability - unAssuming</title>
+
+
+<meta name="author" content="Felix Benning" />
+
+
+<meta name="description" content="A Blog by Felix Benning" />
+
+
+<meta name="keywords" content="education, maths" />
+
+
+<meta property="og:title" content="Introduction to Probability" />
+<meta name="twitter:title" content="Introduction to Probability" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.unassuming.page/blog/mathematics/probability/" /><meta property="og:description" content="Probability theory is best understood through the lense of &ldquo;the expected
+value&rdquo;. We are fundamentally trying to understand what we can expect so
+the expected value is a great place to start" />
+<meta name="twitter:description" content="Probability theory is best understood through the lense of &ldquo;the expected
+value&rdquo;. We are fundamentally trying to understand what we can expect so
+the expected value is a great place to start" /><meta name="twitter:card" content="summary" /><meta property="article:published_time" content="2022-01-20T00:00:00+00:00" /><meta property="article:modified_time" content="2022-01-20T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://www.unassuming.page/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://www.unassuming.page">unAssuming</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://www.unassuming.page/blog/mathematics/probability/">Introduction to Probability</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-01-20</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1491 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/education">education</a>&nbsp;<a href="/tags/maths">maths</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>Probability theory is best understood through the lense of &ldquo;the <strong>expected
+value</strong>&rdquo;. We are fundamentally trying to understand what we can expect so
+the expected value is a great place to start</p>
+<h2 id="expected-value">Expected Value</h2>
+<h3 id="starting-small">Starting Small</h3>
+<p>Let&rsquo;s say you play a game of dice where you win 2€ if you roll a 6 and lose 1€ if you roll any other number. Then we want to calculate what you should <em>expect</em> to receive &ldquo;on average&rdquo;. Now most people find the practice of multiplying the payoff by its probability and summing over them relatively straightforward. In this case you get</p>
+<div>
+$$\text{Expected Payoff} = \frac{1}{6} 2€ + \frac{5}{6}(-1€) = -0.5€$$
+</div>
+<p>
+Now let us try to formalize this and think about what is happening here. We have a set of possible outcomes $\Omega=\{1,2,3,4,5,6\}$
+where each outcome is equally likely. And we have a mapping <span>$Y:\Omega \to \mathbb{R}$</span> which denotes the payoff. I.e.
+</p>
+<div>
+$$
+Y(\omega) = \begin{cases}
+  2 & \omega = 6,\\
+  -1 & \text{else}
+\end{cases}
+$$
+</div>
+<p>And then the expected payoff is</p>
+<div>
+$$
+  \mathbb{E}[Y] = \frac{1}{|\Omega|}\sum_{\omega\in\Omega} Y(\omega) 
+  = \frac{1}{6}(2 + (-1) + ... + (-1)) 
+  = -0.5
+$$
+</div>
+<p>where $|\Omega|$ is the number of elements contained in $\Omega$.</p>
+<h3 id="introducing-infinity">Introducing Infinity</h3>
+<p>Now this works fine for finite $\Omega$, but what if the set of possible
+outcomes is infinite? What if every real number in $[0,1]$ was possible,
+equally likely, and the payoff would look like this?</p>
+<div>
+$$
+Y: \begin{cases}
+	[0,1] \to \mathbb{R} \\
+	\omega \mapsto \begin{cases}
+		2 & \omega > \frac{5}{6} \\
+		-1 & \omega \le \frac{5}{6}
+	\end{cases}
+\end{cases}
+$$
+</div>
+<p>Intuitively this payoff should have the same expected payoff as the previous
+one. But if we simply try to do the same thing as previously&hellip;</p>
+<div>
+$$
+  \mathbb{E}[Y] = \frac{1}{|\Omega|}\sum_{\omega\in\Omega} Y(\omega) 
+  = \frac{1}\infty (\infty - \infty)...
+$$
+</div>
+<p>Okay so we have to be a bit more clever about this. If we have a look at a
+plot of your payoff $Y$,</p>
+<p><img class="img-zoomable" src="/images/probability/payoff.svg" alt="Payoff Plot" />
+</p>
+<p>we might notice that the area under the curve is exactly what we want.</p>
+<div>
+$$
+   -1€\left(\frac56-\frac06\right) + 2€ \left(\frac66 - \frac56 \right) = -0.5€
+$$
+</div>
+<p>Now why is this the same? How are our sums related to an area under a curve?</p>
+<h3 id="summing-to-one">Summing to one</h3>
+<p>To understand this it might be useful to consider what the expected value of
+a simpler function is</p>
+<div>
+$$
+	\mathbf{1}: \begin{cases}
+		\Omega \to \mathbb{R}\\
+		\omega \mapsto 1
+	\end{cases}
+$$
+</div>
+<p>In our first example this was</p>
+<div>
+$$
+	\frac{1}{|\Omega|} \sum_{\omega\in\Omega} \mathbf{1}(\omega) = \frac{|\Omega|}{|\Omega|}
+$$
+</div>
+<p>In our second example this would be</p>
+<div>
+$$
+	\int_{\Omega} 1 d\omega = \int_0^1 1 d\omega
+$$
+</div>
+<p>Now if we recall how the integral (area under the curve) is calculated we might
+notice that in case of indicator functions, we are <em>weighting</em> the height of
+the indicator function with the size of the interval. And the size of the
+interval is its length.</p>
+<p>Similarly we could move $\frac{1}{|\Omega|}$ into the sum and view it as the
+<em>weighting</em> of each $\omega$. And here is where we have the crucial difference:</p>
+<p>In the first case <em>individual</em> $\omega$ have a weight (a probability), while
+individual points in an interval have no length/weight/probability. But while
+sets of individual points have no length, an infinite union of points with
+no length/probability can have positive length/probability.</p>
+<p>This is why probability is closely intertwined with <a href="https://en.wikipedia.org/wiki/Measure_%28mathematics%29" target="_blank">measure theory</a>, where a
+measure is a function assigning sets (e.g. intervals) a weight (e.g. lenght,
+or probability).</p>
+<h3 id="doing-it-properly">Doing it properly</h3>
+<p>So if we restart our attempt at defining the expected value, we start with a
+probability space $\Omega$ and a probability measure $P$ which assigns subsets
+of $\Omega$ a probability. A <strong>real valued random variable</strong> (e.g. payoff) $Y$ is a
+function from $\Omega$ to $\mathbb{R}$. And if it only takes a finite number
+of values in $\mathbb{R}$ (i.e. $Y(\Omega)\subseteq \mathbb{R}$ is finite),
+then we can calculate the expected value by going through these values, weightening them by the probability of their preimages and summing them.</p>
+<div>
+$$
+	\mathbb{E}[Y] = \sum_{y\in Y(\Omega)} y P[Y^{-1}(\{y\})]
+$$
+</div>
+<p>To make notation more readable we can define</p>
+<div>
+$$
+\begin{aligned}
+	P[Y\in A] &:= P[Y^{-1}(A)] \qquad\text{and} \\
+	P[Y=y]&:=P[Y\in\{y\}]
+\end{aligned}
+$$
+</div>
+<p>In our finite example the expected value is</p>
+<div>
+$$
+\begin{aligned}
+	\mathbb{E}[Y] &= 2 P(Y=2) + (-1) P(Y=-1)\\
+	&=2 P(Y^{-1}[\{2\}]) +(-1)P(\{1,2,3,4,5\})\\
+	&= 2 \frac16 -1 \frac56 = -0.5
+\end{aligned}
+$$
+</div>
+<p>In our infinite example the expected value is</p>
+<div>
+$$
+\begin{aligned}
+	\mathbb{E}[Y] &= 2P(Y=2) + (-1)P(Y=-1)\\
+	&= 2P\left(\left(\frac56, 1\right]\right)
+	- P\left(\left[0, \frac56\right]\right) = \int_0^1 Y d\omega\\
+	&= 2 \frac16 - \frac56 = -0.5
+\end{aligned}
+$$
+</div>
+<p>Now it turns out that you can approximate every $Y$ with infinite image
+$Y(\Omega)$ with a sequence of mappings $Y_n$ with finite image. And
+that the limit</p>
+<div>
+$$
+	\int_\Omega Y dP := \lim_n \int_\Omega Y_n dP := \sum_{y\in Y_n(\Omega)} y P(Y=y)
+$$
+</div>
+is also well defined and independent of the sequence $Y_n$.
+<h3 id="lebesgue-integral">Lebesgue Integral</h3>
+<p>The integral we defined above is called the <a href="https://en.wikipedia.org/wiki/Lebesgue_integration" target="_blank">Lebesgue Integral</a>. The neat thing
+about it is, that</p>
+<ol>
+<li>Riemann
+integration is a special case of it, if we integrate over the <a href="https://en.wikipedia.org/wiki/Lebesgue_measure" target="_blank">Lebesgue Measure</a>
+$\lambda$ which assigns intervals $[a,b]$ their length $\lambda([a,b])=b-a$.
+$$\int_{[a,b]} f d\lambda = \int_a^b f(x) dx$$</li>
+<li>Sums and series are also a special case using sequences $(a(n),
+n\in\mathbb{N})$ and a &ldquo;counting measure&rdquo; $\mu$ on $\mathbb{N}$ which assigns a
+set $A$ its size $\mu(A) = |A|$. Then</li>
+</ol>
+<p>$$
+\int_{\Omega} a d\mu = \sum_{n\in\mathbb{N}} a(n)
+$$</p>
+<p>The implications are of course for one, that one can often treat integration
+and summation interchangeably. Proving statements for Lebesgue integrals is
+rarely harder than proving them for Riemann integrals and in the first case
+all results also apply to series and sums.</p>
+<p>It also means we can properly deal with &ldquo;mixed cases&rdquo; where some individual
+points have positive probability and some points have zero probability on
+their own but sets of them have positive probability.</p>
+<p>My stochastics professor likes to call integration just &ldquo;infinite summation&rdquo;
+because in some sense you are just summing over an infinite number of
+elements in a &ldquo;proper way&rdquo;.</p>
+<blockquote>
+<p>The lebesgue integral also makes certain real functions
+integrable which are not integrable with riemann integration. The function
+$\mathbf{1}_{\mathbb{Q}}$ is not riemann integrable, but poses no problem
+for lebesgue integration. The reason is, that riemann integration subdivides
+the $x$-axis and $y$-axis into intervals without consulting the function that is
+supposed to be integrated, while lebesgue integration only subdivides the
+$y$-axis and utilizes the preimage information about the function that is supposed to be integrated.</p>
+</blockquote>
+<h3 id="back-to-intuition">Back to Intuition</h3>
+<p>Now the end result might not resemble our intuition about &ldquo;expected values&rdquo;
+anymore. We get some of that back with theorems like the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers" target="_blank">law of
+large numbers</a> which proves that averages</p>
+<p>$$\frac{1}{n} \sum_{k=1}^n X_k$$</p>
+<p>of independently, identically distributed random variables converge (in various
+senses) to the theoretically defined expected value $\mathbb{E}[X]$.</p>
+<h2 id="a-note-on-random-variables">A note on Random Variables</h2>
+<p>In our examples above, only the payoff $Y$ was a random variable (a function
+from the probability space $\Omega$ to $\mathbb{R}$). But since we can compose
+functions by chaining them, nothing would have stopped us from defining the
+possible die faces as a random variable of some unknown probability space
+$\Omega$. Since our payoff is just a function of the die faces, their
+composition would also be a function from $\Omega$. And it is often convenient
+not to define $\Omega$ and start with random variables right away, as it allows
+easy extensions of our models without having to redefine our probability space.
+Because we treat the underlying probability space as unknown anyway and only
+work with known <em>windows</em> (random variables) into it. Notice how you could
+not discern the die faces ${1,&hellip;,5}$ from payoff $Y=-1$ alone. So
+random variables can also be viewed as information filters.</p>
+<h2 id="lies">Lies</h2>
+<p>While we would like our measures to assign every subset of $\Omega$ a number,
+this is generally not possible without sacrificing its usefulness.</p>
+<p>If we wanted a measure on $\mathbb{R}$ which fulfills the following properties</p>
+<ol>
+<li>translation invariance (moving a set about does not change its size)</li>
+<li>countable summability of disjoint sets</li>
+<li>positive</li>
+<li>finite on every bounded set</li>
+</ol>
+<p>we are only left with the $0$ measure (assigning every set measure 0).</p>
+<blockquote>
+<p>Proofsketch: Use the axiom of choice to select a representative of every
+equivalence class of the equivalence relation $x-y\in \mathbb{Q}$ on the set
+$[0,1]$. This set of representatives is not measurable, because translations
+by rational numbers modulo 1 transforms it into distinct other representation
+sets of the equivalence relation. And since they are disjoint and countable
+we can sum over them and get the measure of the entire interval
+$[0,1]$. But an infinite sum of equally sized sets can not be finite if they
+are not all $0$. Therefore the set $[0,1]$ must have measure 0 and by translation and summation all other sets in $\mathbb{R}$</p>
+</blockquote>
+<p>For this reason we have to restrict ourselves to a set of &ldquo;measurable sets&rdquo;
+(a sigma Algebra) which is only a subset of the powerset $\mathcal{P}(\Omega)$
+of $\Omega$. This conundrum also limits the functions we can integrate with
+lebesgue integration to the set of &ldquo;measurable functions&rdquo;.</p>
+<p>But all of these things are technicalities distracting from the intuition.</p>
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'FelixBenning\/FelixBenning.github.io');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/FelixBenning" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="mailto:Felix.Benning@gmail.com" target="_blank"><span>Email</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/algebra/">algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/analysis/">analysis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/climate-change/">climate-change</a>
+            </span>
+            
+            <span>
+                <a href="/tags/economics/">economics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/education/">education</a>
+            </span>
+            
+            <span>
+                <a href="/tags/health/">health</a>
+            </span>
+            
+            <span>
+                <a href="/tags/linear-algebra/">linear-algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/maths/">maths</a>
+            </span>
+            
+            <span>
+                <a href="/tags/philosophy/">philosophy</a>
+            </span>
+            
+            <span>
+                <a href="/tags/politics/">politics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/two-cents/">two-cents</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#expected-value">Expected Value</a>
+      <ul>
+        <li><a href="#starting-small">Starting Small</a></li>
+        <li><a href="#introducing-infinity">Introducing Infinity</a></li>
+        <li><a href="#summing-to-one">Summing to one</a></li>
+        <li><a href="#doing-it-properly">Doing it properly</a></li>
+        <li><a href="#lebesgue-integral">Lebesgue Integral</a></li>
+        <li><a href="#back-to-intuition">Back to Intuition</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-note-on-random-variables">A note on Random Variables</a></li>
+    <li><a href="#lies">Lies</a></li>
+  </ul>
+</nav></div>
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/FelixBenning" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="mailto:Felix.Benning@gmail.com" target="_blank"><span>Email</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/algebra/">algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/analysis/">analysis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/climate-change/">climate-change</a>
+            </span>
+            
+            <span>
+                <a href="/tags/economics/">economics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/education/">education</a>
+            </span>
+            
+            <span>
+                <a href="/tags/health/">health</a>
+            </span>
+            
+            <span>
+                <a href="/tags/linear-algebra/">linear-algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/maths/">maths</a>
+            </span>
+            
+            <span>
+                <a href="/tags/philosophy/">philosophy</a>
+            </span>
+            
+            <span>
+                <a href="/tags/politics/">politics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/two-cents/">two-cents</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#expected-value">Expected Value</a>
+      <ul>
+        <li><a href="#starting-small">Starting Small</a></li>
+        <li><a href="#introducing-infinity">Introducing Infinity</a></li>
+        <li><a href="#summing-to-one">Summing to one</a></li>
+        <li><a href="#doing-it-properly">Doing it properly</a></li>
+        <li><a href="#lebesgue-integral">Lebesgue Integral</a></li>
+        <li><a href="#back-to-intuition">Back to Intuition</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-note-on-random-variables">A note on Random Variables</a></li>
+    <li><a href="#lies">Lies</a></li>
+  </ul>
+</nav>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2022
+                <a href="https://www.unassuming.page">Felix Benning</a>
+                
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.75.1" />
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
+
+
+
+<title>Utility - unAssuming</title>
+
+
+<meta name="author" content="Felix Benning" />
+
+
+<meta name="description" content="A Blog by Felix Benning" />
+
+
+<meta name="keywords" content="economics, education" />
+
+
+<meta property="og:title" content="Utility" />
+<meta name="twitter:title" content="Utility" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.unassuming.page/blog/utility/" /><meta property="og:description" content="Everyone has preferences. In some sense it defines what being alive means and
+I tend to view preferences as axioms.
+They are also treated as axioms in economics. But what are preferences?" />
+<meta name="twitter:description" content="Everyone has preferences. In some sense it defines what being alive means and
+I tend to view preferences as axioms.
+They are also treated as axioms in economics. But what are preferences?" /><meta name="twitter:card" content="summary" /><meta property="article:published_time" content="2021-06-15T00:00:00+00:00" /><meta property="article:modified_time" content="2021-06-15T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://www.unassuming.page/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://www.unassuming.page">unAssuming</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://www.unassuming.page/blog/utility/">Utility</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-06-15</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;3114 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/economics">economics</a>&nbsp;<a href="/tags/education">education</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>Everyone has preferences. In some sense it defines what being alive means and
+I tend to <a href="/blog/two-cents/concise_philosophy/">view preferences as axioms</a>.
+They are also treated as axioms in economics. But what are preferences?</p>
+<p>Formally preferences are a <a href="https://en.wikipedia.org/wiki/Binary_relation" target="_blank">binary relation</a> on the set of possible world
+states. The greater or equal symbol &ldquo;≥&rdquo; is such a binary relation for example
+and a good intuition for what we are getting at. We then make certain
+assumptions about this relation:</p>
+<ol>
+<li>
+<p>First of all we assume
+<a href="https://en.wikipedia.org/wiki/Connex_relation" target="_blank">connexity</a> (also called
+&ldquo;completeness&rdquo;). This just means that we can compare any two
+world states, which means that for any two world states A and B, we either
+&ldquo;weakly prefer A over B&rdquo; (A ≿ B) or we &ldquo;weakly prefer B over A&rdquo; or both. If
+both are true (we weakly prefer A over B and weakly prefer B over A), then we
+say we are &ldquo;indifferent between A and B&rdquo; (A ~ B).</p>
+</li>
+<li>
+<p>For this reason we also require
+<a href="https://en.wikipedia.org/wiki/Reflexive_relation" target="_blank">reflexivity</a>, i.e. we
+always weakly prefer A over A for any world state A.</p>
+</li>
+<li>
+<p>The last crucial assumption is
+<a href="https://en.wikipedia.org/wiki/Transitive_relation" target="_blank">transitivity</a> which means
+that we weakly prefer A over C if we weakly prefer A over B and B over C.</p>
+</li>
+</ol>
+<p>These three assumptions are the base assumptions for <a href="https://en.wikipedia.org/wiki/Ordinal_utility" target="_blank">ordinal
+utility</a>. While this relation is
+very similar to the &ldquo;greater or equal&rdquo; (≥) relation, it is not the same. The crucial
+difference is that preferences do not have to be
+<a href="https://en.wikipedia.org/wiki/Antisymmetric_relation" target="_blank">antisymmetric</a>, which
+means that (A ≥ B) and (B ≥ A) imply equality (A = B). Because we can have two
+distinct world states we are indifferent in between without them being the same
+world state. For the same reason preferences
+are not a <a href="https://en.wikipedia.org/wiki/Total_order" target="_blank">total order</a>.</p>
+<p>If the set of all possible world states is finite (or
+<a href="https://en.wikipedia.org/wiki/Countable_set" target="_blank">countable</a> to be precise), then
+these three assumptions about the preference relation are enough to prove the
+existence of a <em>utility function</em>. A utility function \(u\) assigns every world
+state a numeric value (<a href="https://en.wikipedia.org/wiki/Real_number" target="_blank">real number</a>) and has the property that
+comparing the numeric values of world states is equivalent to comparing two
+world states, i.e.</p>
+<pre><code class="language-math">	u(x)\ge u(y) \iff x \succsim y
+</code></pre>
+<p>In other words: a utility function transforms an abstract preference relation
+on world states into a greater or equal relation on numbers. This makes it a
+lot easier to work with.</p>
+<p>Now it is important to note that the <em>existence</em> of a utility function does not
+mean that this utility function is <em>unique</em>. In fact adding a constant to a
+utility function does not change the ordering, so this results in another valid
+utility function. In fact any monotonous transformation of a utility function
+is still a utility function describing the same preference relation. This means
+that the specific number (the utility) which is assigned to a world state is
+meaningless by itself, because it is not unique. This is similar to how the
+number 10 is meaningless for measuring temperature without a unit (like celsius)
+to go with.</p>
+<img src="/images/contour-lines.png" width=30% style="float: right;"/>
+<p>What is not meaningless are <em>indifference curves (sets)</em>. Indifference curves
+are basically <a href="https://en.wikipedia.org/wiki/Contour_line" target="_blank">contour lines</a> of the utility function. Think of hight maps
+where the circle of points on the same hight around a mountain are marked
+with a line, or <a href="https://en.wikipedia.org/wiki/Contour_line#Barometric_pressure" target="_blank">isobars</a> in pressure maps. While the the particular number
+assigned to these utility levels is pretty meaningless, the shape of these
+indifference curves are often enough to explain how trade works.</p>
+<p>Of course in reality the set of world states is much more complicated than a
+two dimensional surface with a height. But if you imagine a world state being
+a vector with many different attributes, you can keep all those attributes
+the same except for two (what economists like to call &ldquo;<a href="https://en.wikipedia.org/wiki/Ceteris_paribus" target="_blank">ceteris paribus</a>&rdquo; -
+&ldquo;all things being equal&rdquo;) and use this slice of all possible world states to
+create such a visualization. One might for example keep all attributes
+constant except for the amount of good X and Y a person possesses and get a
+height map like this.</p>
+<img src="/images/simple-indifference-curves.png" width=35% style="float: left;"/>
+<p>If we assumed for a minute that those lines would be straight, you could
+determine the slope of this line by selecting a point on the line, going left
+by one unit and going up until you hit the curve again. The length you need
+to go to up is the amount of the good Y you need to receive to make up
+for the lost good X because then you end up on the curve again (which is by
+definition the set of points you are indifferent in between). Now if the lines
+are not straight, they might still appear to be straight if you zoom in
+enough. This zooming in is basically taking the derivative and this ratio is
+also called the <a href="https://en.wikipedia.org/wiki/Marginal_rate_of_substitution" target="_blank">marginal rate of substitution</a>. Around a particular point
+on the curve, you are willing to trade X for Y if you get at least this ratio
+of Y for X and vice versa.</p>
+<p>As long as you do not end up in some corner case, where someone has already
+traded all X for Y (or Y for X), trades will continue to happen until the
+going exchange rate is equal to everyone&rsquo;s marginal rate of substitution. This
+observation is the basis for the <a href="https://en.wikipedia.org/wiki/Fundamental_theorems_of_welfare_economics" target="_blank">first fundamental theorem of welfare
+economics</a>, which essentially states that an (idealized)
+free market (with perfect information, no market power, no externalities,
+etc.) will result in a <a href="https://en.wikipedia.org/wiki/Pareto_efficiency" target="_blank">pareto optimal</a> outcome. Pareto optimal means that
+no individual can be made better off, without also making somebody worse off.</p>
+<p>Note that Pareto optimality does not make any statements about fairness. It is
+more of a bare minimum to exclude a bunch allocations which do not even
+fulfill such a basic requirement everyone can agree on. Something like
+fairness is a much more difficult goal because it is very difficult to
+define and much more subjective. It would often require comparing utility
+functions or somehow summing them, which is not really possible since they are
+not unique. And if you want to make the preferences of someone more important
+you could simply multiply their utility function with a large number, then the
+result is still a utility function describing their preferences, but suddenly
+everything which makes them worse off results in really big utility
+differences.</p>
+<p>In practice people usually solve this issue by evaluating everything according
+to their own utility function by imagining themselves in the shoes of other
+people and evaluating the impact of their actions according to their own
+preferences. This works as long as preferences are sufficiently similar.
+Everyone can relate to hunger, so people usually agree that it is &ldquo;the right
+thing&rdquo; to prioritize that over basically everything else for others as well.
+But people can not always relate to others preferences and that is usually
+where disagreements happen.</p>
+<p>Combining the utility functions of many individuals into one preference of
+society of sorts is not only difficult, it can in fact be shown that it is
+impossible. This result is known as the <a href="https://en.wikipedia.org/wiki/Condorcet_paradox" target="_blank">Condorcet Paradox</a> or <a href="https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem" target="_blank">Arrow&rsquo;s
+Impossibility Theorem</a>, where the condorcet
+paradox is more of a concrete
+example for weird behavior happening with different known voting systems while
+arrows impossibility theorem proves that there cannot be <em>any</em> voting system
+which has certain properties everyone would agree a voting system <em>should</em>
+have. PBS Infinite series made two excellent videos explaining those two
+results.</p>
+<div>
+	<iframe 
+		width="50%"
+		src="https://www.youtube.com/embed/HoAnYQZrNrQ"
+		title="Condorcet Paradox (PBS Infinite Series)"
+		frameborder="0"
+		allow="accelerometer; autoplay; clipboard-write;encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen>
+	</iframe><iframe
+		width=50%
+		src="https://www.youtube.com/embed/AhVR7gFMKNg"
+		title="Arrows Impossibility Theorem (PBS Infinite Series)"
+		frameborder="0"
+		allow="accelerometer;autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen>
+	</iframe>
+</div>
+<p>Since combining individuals utility functions into one social preference
+function for society is actually impossible economists usually stay away from
+fairness arguments. This might be surprising as it might seem that pareto
+efficiency should naively be a given. Everyone agrees that things
+should happen if it makes someone better of and nobody worse off. So it seems
+that the real problem should be making the world fair, as pareto efficiency
+should be easy. But this is in fact not the case. Achieving pareto efficiency
+is often not a given and in some cases even impossible.</p>
+<h2 id="risk">Risk</h2>
+<p>Our <a href="https://en.wikipedia.org/wiki/Ordinal_utility" target="_blank">ordinal utility</a> function has served us well until now. But in order to
+deal with risk we need to make more assumptions. To assess risk, it is also
+important to ask &ldquo;by how much better?&rdquo; and not just &ldquo;better or not?&rdquo;. To obtain
+such a <a href="https://en.wikipedia.org/wiki/Cardinal_utility" target="_blank">cardinal utility</a> function we first assume that we do not only have
+preferences over world states, but actually preferences over probability
+distributions over world states. Now here is the thing, if we have two
+probability distributions and one happens with probability p and the other
+with probability (1-p), then this setup itself is a probability distribution
+over world states too. The property we would like our utility function to
+have now, is that such a combined distribution</p>
+<p>$$px + (1-p)y$$</p>
+<p>of the two distributions x and y has utility</p>
+<p>$$u(px + (1-p) y) = pu(x) + (1-p) u(y)$$</p>
+<p>Such a utility function is called <a href="https://en.wikipedia.org/wiki/Cardinal_utility" target="_blank">cardinal utility</a> and is unique up to
+linear transformations (shifts up and down and multiplying the function with
+a constant are still valid).
+The <a href="https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem" target="_blank">Von-Neuman-Morgenstern utility theorem</a> states
+that the following additional assumption on the preference relation is
+sufficient for the utility function to have this property</p>
+<blockquote>
+<p>For any world states x, y, z with
+$$x\succsim y \succsim z$$
+there is a p between 0 and 1 such that
+$$px + (1-p)z \sim y$$
+which essentially just means that there exists a probability such that you
+are indifferent between the mediocre world state and the lottery between the
+good and bad world state.</p>
+</blockquote>
+<p><a href="#Risk">Recall</a> that we already assumed <a href="https://en.wikipedia.org/wiki/Connex_relation" target="_blank">connexity</a>,<a href="https://en.wikipedia.org/wiki/Transitive_relation" target="_blank">transitivity</a>, and
+<a href="https://en.wikipedia.org/wiki/Reflexive_relation" target="_blank">reflexivity</a>. This is not a very strong assumption either. And note that we
+were only able to construct an ordinal utility function on finite (or
+<a href="https://en.wikipedia.org/wiki/Countable_set" target="_blank">countable</a>) sets of world states. Using the assumption above lets us
+construct <a href="https://en.wikipedia.org/wiki/Cardinal_utility" target="_blank">cardinal utility</a> functions on arbitrarily large world state sets.</p>
+<p>But since linear transformations of utility functions are still valid
+<a href="https://en.wikipedia.org/wiki/Cardinal_utility" target="_blank">cardinal utility</a> functions for the same preference relation, utility functions
+are still not comparable under this new assumption.</p>
+<h3 id="risk-aversion">Risk Aversion</h3>
+<div style="float:right;padding-left:10px">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>100k</th>
+<th>1 mio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>utility</td>
+<td>0</td>
+<td>500</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Many people misunderstand the linearity of the utility function with regards
+to probability to mean that people should be indifferent to risk and only
+consider the expected value. This is not the case. In fact it is a very
+common assumption in economics that people are risk averse. Consider for
+example a lottery where you make nothing 90% of the time and 1 mio € 10%
+of the time. The expected value is 100,000 € then. But if the utility for
+the guaranteed prices would be as in the table, the value of the lottery would
+just be</p>
+<p>$$
+u(0.9\cdot 0 + 0.1\cdot\text{1 mio}) = 100 \le u(100k)
+$$</p>
+<p>which is considerably lower than the utility of the expected value. In fact
+a function with the property</p>
+<p>$$
+u(\lambda x + (1-\lambda)y) \ge \lambda u(x) + (1-\lambda) u(y)
+% = u(\lambda\cdot x + (1-\lambda)\cdot y)
+$$</p>
+<p>is called <a href="https://en.wikipedia.org/wiki/Concave_function" target="_blank">concave</a>. And functions with a decreasing slope are concave. This
+means that decreasing marginal utility is equivalent to risk aversion. In
+other words: If the improvement from 0 to 1 mio € is bigger than from
+1 mio € to 2 mio €, then you &ldquo;the increase&rdquo; in utility decreases with wealth
+(i.e. your marginal utility goes down). And in that case it is rational to
+be risk averse. This means that most people prefer to take the sure expected
+value rather than the lottery.</p>
+<p>This is the reason insurance exists. By pooling money, the lottery averages out.
+Nobody has to pay really large sums of money to cover an accident by chance,
+instead everyone pays a little bit for sure. Now insurance has operating costs
+so people have to pay a bit more than the average damages. But since they
+strictly prefer to pay average damages over the lottery, there is some wiggle
+room to accommodate fees and still improve everyone&rsquo;s lives. To quantify this
+wiggle room, economists define the risk premium. Which is the additional
+amount of money one has to give a risk averse person to make them accept the
+lottery over the safe value.</p>
+<blockquote>
+<p>Not everyone has to be risk averse, and there are local situations where
+a lot of people might not be. A good example might be, that you have the
+option between a lottery for two tickets and one ticket. Since you would
+enjoy the show a lot more with company than alone, the second ticket might
+be worth more than the first, which would make you risk loving in this case.</p>
+<p>Lotteries are an easy way to introduce risk. So in that sense lotteries are
+the opposite of insurance.</p>
+</blockquote>
+<h2 id="patience">Patience</h2>
+<p>Most people are impatient. If you are given the option for 1000 € now or in a
+year, almost everyone would take now. In part this is due to the fact, that
+you can always keep it til the next year. So getting it now must be at least
+as good as later. But additionally it also provides you with additional options
+you can do right now. Economists like to model impatience like this. They
+assume that you have basically the same preferences next year (which is
+probably reasonable to assume, since that is probably what everyone assumes
+about themselves), and then they argue that the utility of this year is the
+immediate utility of the things you do this year x<sub>0</sub> plus the utility of
+what you do next year x<sub>1</sub> with a discount.</p>
+<p>$$ U(x_0) = u(x_0) + \lambda U(x_1) $$</p>
+<p>To extend this to more than two years, the argument goes like this. We assume
+the preferences stay the same over time so the utility at timestep 1 is</p>
+<p>$$U(x_1) = u(x_1) + \lambda U(x_2).$$</p>
+<p>So if we now plug that into the first formula we get</p>
+<p>$$
+U(x_0) = u(x_0) + \lambda u(x_1) + \lambda^2 U(x_2).
+$$</p>
+<p>Continuing with this line of argument we get</p>
+<p>$$
+U(x_0) = \sum_{k=0}^\infty \lambda^k u(x_k).
+$$</p>
+<p>In other words we assume that the utility value of successive years decays
+exponentially.</p>
+<blockquote>
+<p>This assumption is wrong. Experiments show that the discounting for the first
+year is much higher than for the following years. This means that in year
+zero a person assumes they will care more about year two in year one than
+they actually will, which results in procrastinating behavior. A more fitting
+discount method is thus <a href="https://en.wikipedia.org/wiki/Hyperbolic_discounting" target="_blank">hyperbolic discounting</a> which is studied in <a href="https://en.wikipedia.org/wiki/Behavioral_economics" target="_blank">behavioral
+economics</a>. But since this way of discounting results in time-inconsistent
+behavior (people break their own plans), people often try to take measures
+which locks them into their plans. If we assume that people take these
+&ldquo;rational guardrail&rdquo; measures when making financial decisions it is probably
+fair to assume exponential discounting in investment theory. Lock-in might
+consist of a fixed savings plan, etc.</p>
+<p>Exponential discounting also makes the math easier. Which is good for an
+introduction.</p>
+</blockquote>
+<h3 id="investment">Investment</h3>
+<p>If your discount factor is 90%, then you would be indifferent between 9€ now, or
+10€ a year later. If someone else has a discount factor of 95% they would
+value those 10€ later at 9.50€. So if you will get 10€ in a year, you could
+sell these 10€ in the future for 9.20€ now to this second person which would
+make you both better off. Receiving 9.20€ now and paying 10€ a year later
+is equivalent to taking out a credit with an interest rate of roughly 8.7%.
+And if you have a discount factor of 90% an interest rate of 11.1% makes you
+indifferent. Given a discount factor of 95% an interest rate of 5.3% makes
+them indifferent.</p>
+<p>Since everyone can trade with everyone, available interest rates can in some
+sense be viewed as the result of averaging the &ldquo;indifference rates&rdquo; from
+all participating people which are a result of their individual discount
+factors.</p>
+<p>There are a couple more complications like the fact that lending interest
+rates are often not equal to saving interest rates and people can not borrow
+arbitrary amounts of money. People usually do not lend out money to other
+people for them to use it for consumption. Because if people were going to
+borrow at these rates due to very high impatience, then they are likely to
+delay repaying this credit as long as possible.</p>
+<p>So a different view to deduce interest rates is an equilibrium of available
+investments. Assume that you could buy a machine for example, which makes your
+work easier. Let us say it makes you twice as productive the next year but
+costs you time to build this year. Without the machine you might be able
+to produce goods of value 10 this and next year. With the machine you might
+only be able to produce goods of value 1 this year, but due to the doubling
+in productivity you can produce a value of 20 next year. Now if we want to
+compare those two scenarios we somehow have to determine a total value over
+all years. But as we already established, returns in the future are less
+valuable than returns now. So one has to discount the future year. Now we are
+indifferent between both scenarios if</p>
+<p>$$
+1 + \lambda 20 = 10 + \lambda 10
+$$</p>
+<p>which is the case for a discount factor of 90%. In other words this investment
+opportunity is equivalent to an interest rate of 11.1%. So if you need funding
+to cover your first year of being unproductive while producing the machine,
+you can offer this interest rate at the maximum. In reality many different
+projects are funded. Investment projects are willing to accept different
+types of interest rates. If you sum all projects which are wiling to accept
+an interest rate of r and plot this number of projects against r, then the
+number of projects will decrease with r. On the other hand people who are
+willing to delay their consumption and provide the funding if they get an
+interest rate of r is going to increase as r increases above their indifference
+interest rate of more and more people. At some point the demand for funding
+equals the supply for funding which is the equilibrium interest rate.</p>
+<p>In short: People more patient than available interest rates will provide
+funding at these rates for projects which yield at least these rates. While
+people less patient than these rates will generally not save money, but are
+also not able to borrow, because they are likely to still be impatient in the
+future and thus never really willing to pay it back.</p>
+<blockquote>
+<p>Note that hunger generally reduces patience - patience might be determined
+by circumstances more than anything else and should not be viewed through a
+moral lense in my opinion.</p>
+</blockquote>
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'FelixBenning\/FelixBenning.github.io');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/FelixBenning" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="mailto:Felix.Benning@gmail.com" target="_blank"><span>Email</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/algebra/">algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/analysis/">analysis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/climate-change/">climate-change</a>
+            </span>
+            
+            <span>
+                <a href="/tags/economics/">economics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/education/">education</a>
+            </span>
+            
+            <span>
+                <a href="/tags/health/">health</a>
+            </span>
+            
+            <span>
+                <a href="/tags/linear-algebra/">linear-algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/maths/">maths</a>
+            </span>
+            
+            <span>
+                <a href="/tags/philosophy/">philosophy</a>
+            </span>
+            
+            <span>
+                <a href="/tags/politics/">politics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/two-cents/">two-cents</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#risk">Risk</a>
+      <ul>
+        <li><a href="#risk-aversion">Risk Aversion</a></li>
+      </ul>
+    </li>
+    <li><a href="#patience">Patience</a>
+      <ul>
+        <li><a href="#investment">Investment</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/FelixBenning" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="mailto:Felix.Benning@gmail.com" target="_blank"><span>Email</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/algebra/">algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/analysis/">analysis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/climate-change/">climate-change</a>
+            </span>
+            
+            <span>
+                <a href="/tags/economics/">economics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/education/">education</a>
+            </span>
+            
+            <span>
+                <a href="/tags/health/">health</a>
+            </span>
+            
+            <span>
+                <a href="/tags/linear-algebra/">linear-algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/maths/">maths</a>
+            </span>
+            
+            <span>
+                <a href="/tags/philosophy/">philosophy</a>
+            </span>
+            
+            <span>
+                <a href="/tags/politics/">politics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/two-cents/">two-cents</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#risk">Risk</a>
+      <ul>
+        <li><a href="#risk-aversion">Risk Aversion</a></li>
+      </ul>
+    </li>
+    <li><a href="#patience">Patience</a>
+      <ul>
+        <li><a href="#investment">Investment</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2022
+                <a href="https://www.unassuming.page">Felix Benning</a>
+                
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+
+
+</body>
+
+</html>

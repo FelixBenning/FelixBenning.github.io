@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.75.1" />
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
+
+
+
+<title>Intuitive Indexing - unAssuming</title>
+
+
+<meta name="author" content="Felix Benning" />
+
+
+<meta name="description" content="A Blog by Felix Benning" />
+
+
+<meta name="keywords" content="programming, maths" />
+
+
+<meta property="og:title" content="Intuitive Indexing" />
+<meta name="twitter:title" content="Intuitive Indexing" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.unassuming.page/blog/programming/intuitive-indexing/" /><meta property="og:description" content="While most programming languages use 0-based indexing some people are not
+convinced that this is a good thing and not just the legacy of
+the language C. They argue that starting to index with one is more intuitive
+than starting to index with zero, and that there is no good reason to use
+0-based indices besides pointer arithmetic which should not be of concern to
+higher level programming.
+And to be fair, proponents of zero based indexing have mostly failed to provide
+a convincing argument for their preference (Dijkstra&rsquo;s range
+argument aside). To remedy this, I am going to present 5 arguments
+for 0-based indexing and address the intuition argument of 1-based
+indexing." />
+<meta name="twitter:description" content="While most programming languages use 0-based indexing some people are not
+convinced that this is a good thing and not just the legacy of
+the language C. They argue that starting to index with one is more intuitive
+than starting to index with zero, and that there is no good reason to use
+0-based indices besides pointer arithmetic which should not be of concern to
+higher level programming.
+And to be fair, proponents of zero based indexing have mostly failed to provide
+a convincing argument for their preference (Dijkstra&rsquo;s range
+argument aside). To remedy this, I am going to present 5 arguments
+for 0-based indexing and address the intuition argument of 1-based
+indexing." /><meta name="twitter:card" content="summary" /><meta property="article:published_time" content="2020-10-03T00:00:00+00:00" /><meta property="article:modified_time" content="2021-05-23T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://www.unassuming.page/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://www.unassuming.page">unAssuming</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://www.unassuming.page/blog/programming/intuitive-indexing/">Intuitive Indexing</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-03</span>
+<span><i class="iconfont icon-sync-circle-sharp"></i>&nbsp;2021-05-23</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2581 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/programming">programming</a>&nbsp;<a href="/tags/maths">maths</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>While most programming languages use 0-based indexing <a href="https://hisham.hm/2021/01/18/again-on-0-based-vs-1-based-indexing/" target="_blank">some people are not
+convinced</a> that this is a good thing and not just the legacy of
+the language C. They argue that starting to index with one is more <em>intuitive</em>
+than starting to index with zero, and that there is no good reason to use
+0-based indices besides pointer arithmetic which should not be of concern to
+higher level programming.</p>
+<p>And to be fair, proponents of zero based indexing have mostly failed to provide
+a convincing argument for their preference (<a href="#5-ranges">Dijkstra&rsquo;s range
+argument</a> aside). To remedy this, I am going to present 5 arguments
+for 0-based indexing and address the intuition argument of 1-based
+indexing.</p>
+<h2 id="0-intuition">0. Intuition</h2>
+<p>Sure if you simply want to enumerate a written list, 1-based indexing makes
+more sense. 1-based indexing then provides you with the correspondence of the
+n-th element with the index n. But we do not have to look far to find instances
+where this does not apply. One simple example are the parameters of polynomials
+or exponential series to be more general. Mathematicians generally write</p>
+<p>$$a_0 + a_1 x +a_2 x^2 + a_3 x^3&hellip;$$</p>
+<p>starting with the index zero. And exponential series are <em>everywhere</em>. Sine,
+Cosine, Fourierseries, Taylorseries, etc. The taylor series brings us to the
+next class of things you want to index with zeros: Operations you might apply
+repeatedly. Having the function itself as the 0-th derivative of itself allows
+one to intuitively place it in the same enumeration as the rest of the
+derivatives. The same happens when you want to repeatedly apply some operator
+(e.g. the transition matrix for markov chains). Or any discretized physics simulation starting at (surprise, surprise) time zero.</p>
+<p>And there are more places where you just have some initial thing left over
+which does not really belong into your enumeration. In the case of linear
+regression, you might have n parameters with coefficients plus a bias. Using
+zero based indexing, the bias naturally becomes the 0-th element while the
+coefficient at index i corresponds to the i-th element.</p>
+<p>$$y = a_0 + a_1 x_1 + &hellip; + a_n x_n$$</p>
+<p>So while there are certainly cases where 1-based indexing might be more
+intuitive for enumeration, there are just as many use cases where 0-based
+indexing is more intuitive. And since this is not really an argument <em>for</em>
+0-based indexing but rather a counterargument to the inherent intuitiveness of
+1-based indexing, it is nice that I had some index left over to start the
+actual argument for 0-based indexing now:</p>
+<h2 id="1-pointers">1. Pointers</h2>
+<p>The most well known argument for 0-based indexing is pointer arithmetic.
+Computer memory is enumerated with integer addresses, and a &ldquo;pointer&rdquo; is
+just a variable storing the address for some bit of memory. If you want to
+store an array of size n in memory, it is enough to reserve this memory and
+keep the address to the first bit of memory. If you want to retrieve the second
+element, you know that its position is right after the second element at
+address <code>p</code>. Therefore the second element is stored at address <code>p+1</code>. The
+i-th element is stored at address <code>p+(i-1)</code> and the first element is stored
+at <code>p+0</code> because <code>p</code> already points to the first element. So pointers naturally
+give rise to zero based indexing.</p>
+<p>Now I agree that this is not a good enough reason to use zero based indexing.
+No one should work with bare pointers in this day and age and programming
+languages could just abstract such implementation detail away. But I made this
+point not only for completeness sake, it is also a good introduction to</p>
+<h2 id="2-ndarrays">2. NDArrays</h2>
+<p>Memory is 1-dimensional. Addresses are just a single number incrementing.
+A naive approach to store a matrix in memory might be, to store an array of
+arrays. I.e. an array with pointers representing the columns with every pointer
+pointing to a row. While this works, it is not very efficient. Not only do
+you need to store an entire array of pointers, you also have to first retrieve
+them to find the right row. This means access to an element requires two memory
+retrievals and memory operations are notoriously expensive compared to
+arithmetic. It is thus preferable to simply <em>flatten</em> n dimensional arrays.
+This means that rows are simply concatenated and stored one after the other.</p>
+<p>So lets see how that would look for a 3x10 matrix in one based indexing</p>
+<table>
+<tr>
+   <th></th>
+   <th>col 1</th>
+   <th>col 2</th>
+   <th>col 3</th>
+   <th>col 4</th>
+   <th>col 5</th>
+   <th>col 6</th>
+   <th>col 7</th>
+   <th>col 8</th>
+   <th>col 9</th>
+   <th>col 10</th>
+</tr>
+<tr>
+   <th> row 1 </th>
+   <td>01</td>
+   <td>02</td>
+   <td>03</td>
+   <td>04</td>
+   <td>05</td>
+   <td>06</td>
+   <td>07</td>
+   <td>08</td>
+   <td>09</td>
+   <td>10</td>
+</tr>
+<tr>
+   <th> row 2 </th>
+   <td>11</td>
+   <td>12</td>
+   <td>13</td>
+   <td>14</td>
+   <td>15</td>
+   <td>16</td>
+   <td>17</td>
+   <td>18</td>
+   <td>19</td>
+   <td>20</td>
+</tr>
+<tr>
+   <th> row 3 </th>
+   <td>21</td>
+   <td>22</td>
+   <td>23</td>
+   <td>24</td>
+   <td>25</td>
+   <td>26</td>
+   <td>27</td>
+   <td>28</td>
+   <td>29</td>
+   <td>30</td>
+</tr>
+</table>
+<p>and compare it to a 0-based layout:</p>
+<table>
+<tr>
+   <th></th>
+   <th>col 0</th>
+   <th>col 1</th>
+   <th>col 2</th>
+   <th>col 3</th>
+   <th>col 4</th>
+   <th>col 5</th>
+   <th>col 6</th>
+   <th>col 7</th>
+   <th>col 8</th>
+   <th>col 9</th>
+</tr>
+<tr>
+   <th> row 0 </th>
+   <td>00</td>
+   <td>01</td>
+   <td>02</td>
+   <td>03</td>
+   <td>04</td>
+   <td>05</td>
+   <td>06</td>
+   <td>07</td>
+   <td>08</td>
+   <td>09</td>
+</tr>
+<tr>
+   <th> row 1 </th>
+   <td>10</td>
+   <td>11</td>
+   <td>12</td>
+   <td>13</td>
+   <td>14</td>
+   <td>15</td>
+   <td>16</td>
+   <td>17</td>
+   <td>18</td>
+   <td>19</td>
+</tr>
+<tr>
+   <th> row 2 </th>
+   <td>20</td>
+   <td>21</td>
+   <td>22</td>
+   <td>23</td>
+   <td>24</td>
+   <td>25</td>
+   <td>26</td>
+   <td>27</td>
+   <td>28</td>
+   <td>29</td>
+</tr>
+</table>
+<p>You might have noticed that in the second case, the first digit is always equals
+the row while the first digit always equals the column. So if we wanted to
+access the element <code>a[i][j]</code> we could simply access <code>a[ij]</code>. Now of course
+concatenation of numbers is not really a thing unless you switch to strings
+so the actual operation would look like this <code>a[i*10 + j]</code>.</p>
+<p>Now you might argue that this example only works because we are using a base
+10 numbering system. This is half right. The concatenation? Sure. But that is
+due to digits being written as</p>
+<p>$$abcd = a 10^3 + b10^2 + c 10^1 + d 10^0$$</p>
+<p>If you have an arbitrary n x m matrix, you will still be able to access
+the element <code>a[i][j]</code> with <code>a[i*m + j]</code>.</p>
+<p>I challenge you to try and come up with the bijection for 1-based indexing
+without converting everything to 0-based indices and back. It is quite difficult
+to wrap your head around. Notice that the other way around is just as easy:</p>
+<p><code>a[n]</code> is converted to <code>a[floor(n/m)][a%m]</code>. Now for n dimensional arrays you
+might still argue that this only works if all the dimensions have the same size.
+But this is not the case. While our numbering system generally work with powers
+of some base. (e.g. <code>10^0</code>, &hellip; <code>10^n</code>), this does not have to be and is not
+always the case. Just think of seconds, minutes, hours, days, months, years.
+To convert years into seconds, you have to multiply them by the size of every
+previous dimension. The same works for n dimensional arrays.</p>
+<h3 id="why-do-0-based-indices-work-better-here">Why do 0-based indices work better here?</h3>
+<p>Whether we are talking about number systems or flattened multidimensional
+arrays the underlying principle is that we have positions/digits which wrap
+around (modulo algebra) and carry over into the next position/digit. And
+modulo algebra is generally done from <code>0</code> to <code>n-1</code> not from <code>1</code> to <code>n</code>. We
+generally  don&rsquo;t write <code>10:60</code> and instead wrap around from <code>10:59</code> to <code>11:00</code>.
+Carrying over from minutes to hours. Similarly it is easier to wrap arrays after
+(n-1) and not n.</p>
+<h3 id="a-note-on-column-vs-row-major-storage">A note on Column vs Row Major Storage</h3>
+<p>I have used row major storage here. This means that we first go through
+the rows and then through the columns when enumerating our matrix.</p>
+<p>Now keen eyes might notice that we do not really specify what is a column or a
+row so you could just pretend it is different.
+But since we generally write column indices before row indices, we mean by
+&ldquo;row major&rdquo; that we first go through the right-most index. And that is fixed
+by the language.</p>
+<p>Column major storage would also work, but that would mean we have to
+flip around <code>a[ij]</code> to <code>a[j][i]</code>. In a sense our numbering system is row major,
+the things close together are on the right, not the left. <code>55</code> is closer to
+<code>56</code> than to <code>65</code>. And access behavior in programming languages obeys this
+principle. If you retrieve <code>object.property.name</code> from a hierarchical struct,
+then <code>name</code> is stored next to <code>object.property.description</code>. Not next to
+<code>object.property2.name</code>. Similarly an array of arrays (which is sometimes necessary if the sub arrays do not have the same size), will result in things
+closer together being on the right.</p>
+<p>Lastly it is very easy to write down an array of arrays:</p>
+<pre><code class="language-python">a = [
+   [1,2,3,4],
+   [3,4,5,6]
+]
+</code></pre>
+<p>which is easily and sensibly translated to a row major storage. You can also
+easily provide rows from <code>a</code> by writing <code>a[i]</code> and access a column from that
+row with <code>a[i][j]</code> which is the same element as <code>a[ij]</code>. While returning the
+column <code>a[j]</code> if you access a column major store would mean that the i-th row
+from that column <code>a[j][i]</code> corresponds to the element <code>a[ij]</code>.</p>
+<p>So column major storage violently collides with every other access convention.</p>
+<p>Column major storage also means that</p>
+<p>$$x A^T$$</p>
+<p>for a vector x and matrix A will be faster than</p>
+<p>$$
+Ax
+$$</p>
+<p>The fact that this convention is used in most scientific computing languages
+from Fortran, R and Matlab to now even Julia is disturbing.</p>
+<h2 id="3-divide-and-conquer">3. Divide and Conquer</h2>
+<p>While you might still argue that n dimensional arrays can be abstracted away
+and do not matter, the fundamental principle which makes them work better with
+0-based indices also makes &ldquo;Divide and Conquer&rdquo; algorithms easier with 0-based
+indices. Splitting <code>n</code> tasks into equally sized <code>m</code> portions is equivalent to
+equally distributing those <code>n</code> tasks over <code>m</code> rows in a matrix. In other words
+converting a one dimensional array of length <code>n</code> into an</p>
+<p>$$ m\times\text{ceil}(m/n)$$</p>
+<p>array. And <a href="https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm" target="_blank">divide and conquer</a> algorithms are everywhere, from sorting algorithms to
+workload distribution over computing cores.</p>
+<h2 id="4-discretization">4. Discretization</h2>
+<p>Another task which is extremely common is the discretization of a continuous
+interval. One might for example want to discretize the interval from 0 to 1 with
+points distanced <code>1/n</code> from each other: <code>[0, 1/n,...,1]</code>. The value at
+point <code>i/n</code> will correspond to the index <code>i</code> inside the value array. If you
+want to find the best approximation for a point between 0 and 1, you simply
+multiply it by <code>n</code> and round to the nearest integer &ndash; that will be your index.</p>
+<p>I got asked once whether that was an artifact of the interval from 0 to 1. But
+that is again not the case. If we took the interval from 1 to 2, you would have
+to subtract 1 from your location when looking for the index in 0-based indexing
+sure, but you would also have to do that in 1-based indexing plus you would
+still have to fix the index in the end.</p>
+<p>To get an intuition for why this is the case, consider <code>n=10</code>. Then our points
+are <code>0.0, 0.1, 0.2,..., 1.0</code> or <code>1.0, 1.1,...2.0</code>, notice how the index is
+<code>0.i</code> or <code>1.i</code> respectively. Shifting the interval does not help because it
+shifts the wrong digit. And this also explains why counting from <code>0001</code> is
+weird. You start with every digit at <code>0</code> <em>except</em> for the <code>10^0</code> digit. So
+as soon as you shift the scale everything breaks, because you do not start
+counting from <code>1111</code> but from <code>0001</code>. Counting from 0 is natural, we do it
+for every digit <em>but</em> the ones.</p>
+<p>Now you <em>could</em> shift the interval by your discretization size and start with
+<code>0.1, ..., 1.0</code>. But then your interval/your starting point depends on the
+discretization. And generally any situation where you are discretizing, you
+very much care about <code>0</code> (e.g. time in physics simulations/differential
+equations).</p>
+<p>It is also often the case that you want to compare two different discretizations
+to estimate whether or not you already have convergence. If you consider another
+discretization with points distanced <code>1/2n</code> apart, then you can easily find
+the values of the rough discretizations by looking for the index <code>a[i*2]</code>
+in the array of finer discretizations.</p>
+<h2 id="5-ranges">5. Ranges</h2>
+<p>Lastly there is also the often cited argument by <a href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html" target="_blank">Dijkstra</a> about ranges. As you might have noticed in the discretization
+argument, the number of points in <code>[0.0,0.1,... 1.0]</code> is not 10, it is 11.
+Similarly there are (n-m+1) elements in <code>[m,...,n]</code>. This <code>+1</code> is quite
+confusing and irritating when slicing your data. So the idea is, that you want
+your ranges to include just as many elements as they are sized. To achieve that
+you need to drop either the first or the last element. In other words:</p>
+<p><code>a[m:n]</code> should either be <code>[a[m+1],...,a[n]]</code> or <code>[a[m],...,a[n-1]]</code>.</p>
+<p>The first variant is considered weird by most people (including proponents of
+1-based indexing). The second variant does not work well with 1-based indices,
+as  <code>a[k:length(a)]</code> would not include the last index. But this works extremely
+well for 0-based indexing precisely <em>because</em> the last element of an array of
+size n is the element at index <code>n-1</code>.</p>
+<p>But Python does even more nifty things with ranges using zero based indexing.
+Instead of having to use something like <code>a[length(a)-(k-1)]</code> to obtain the k-th
+last element, you can simply wrap your array around and obtain <code>a[-k]</code>. In
+particular the last element is just <code>a[-1]</code>.</p>
+<p>Now you <em>could</em> of course do the same with 1-based indices and make <code>a[0]</code>
+the last element, but I would personally find that extremely irritating &ndash;
+modulo algebra is inherently 0-based.</p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>When I started to think about this issue I thought that you basically had to
+decide between ranges working intuitively, (lengths corresponding to
+differences) and the intuition that the <code>i-th</code> element should be at index <code>i</code>. Because one can not seem to have both.</p>
+<p>And at that point I would have already chosen ranges. Why? Because</p>
+<ol>
+<li>Slicing data into pieces is mentally much more challenging than retrieving
+a single index. So if one or the other should be made easier it should be
+the more difficult and thus more bug prone thing.</li>
+<li>I can not think of a single reason why you would want to access the <code>i-th</code>
+element in a programming language. You generally use arrays when all the
+elements have similar meaning and there is no reason to pick a particular
+element from the list. If they had special meaning using maps (dictionaries)
+or structs seems much more appropriate since you can give your entries
+names then. Slicing data on the other hand? You want to see the top 10
+tourist attractions? Sure sort your dataframe and use <code>df[:10]</code>. Any
+divide and conquer algorithm is another example.</li>
+</ol>
+<p>And since ranges are more challenging and used more often, I would have picked
+0-based indexing based on this merit alone. But it is <em>not</em> the only reason one
+should make this decision. It is one of many.</p>
+<p>The trap people fall into, is that they think of hand written lists when they
+think about indices. Sure, there it might be a bit more intuitive to use 1-based
+indices. But we are not handwriting lists here. We have to do much more complex
+things with indices, and 0-based indices just work much better when you actually
+have to do arithmetic with them.</p>
+<p>And sure you can abstract a lot of things away, but <em>someone</em> still has to
+write that code. And if you abstract it away then neither of them have any
+advantages. So we might as well use 0-based indexing at this point, since you
+should not see indices anyway. Lastly &ldquo;use a library&rdquo; should not be the answer to a design failure.</p>
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'FelixBenning\/FelixBenning.github.io');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/FelixBenning" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="mailto:Felix.Benning@gmail.com" target="_blank"><span>Email</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/algebra/">algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/analysis/">analysis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/climate-change/">climate-change</a>
+            </span>
+            
+            <span>
+                <a href="/tags/economics/">economics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/education/">education</a>
+            </span>
+            
+            <span>
+                <a href="/tags/health/">health</a>
+            </span>
+            
+            <span>
+                <a href="/tags/linear-algebra/">linear-algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/maths/">maths</a>
+            </span>
+            
+            <span>
+                <a href="/tags/philosophy/">philosophy</a>
+            </span>
+            
+            <span>
+                <a href="/tags/politics/">politics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/two-cents/">two-cents</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-intuition">0. Intuition</a></li>
+    <li><a href="#1-pointers">1. Pointers</a></li>
+    <li><a href="#2-ndarrays">2. NDArrays</a>
+      <ul>
+        <li><a href="#why-do-0-based-indices-work-better-here">Why do 0-based indices work better here?</a></li>
+        <li><a href="#a-note-on-column-vs-row-major-storage">A note on Column vs Row Major Storage</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-divide-and-conquer">3. Divide and Conquer</a></li>
+    <li><a href="#4-discretization">4. Discretization</a></li>
+    <li><a href="#5-ranges">5. Ranges</a></li>
+    <li><a href="#final-thoughts">Final Thoughts</a></li>
+  </ul>
+</nav></div>
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/FelixBenning" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="mailto:Felix.Benning@gmail.com" target="_blank"><span>Email</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/algebra/">algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/analysis/">analysis</a>
+            </span>
+            
+            <span>
+                <a href="/tags/climate-change/">climate-change</a>
+            </span>
+            
+            <span>
+                <a href="/tags/economics/">economics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/education/">education</a>
+            </span>
+            
+            <span>
+                <a href="/tags/health/">health</a>
+            </span>
+            
+            <span>
+                <a href="/tags/linear-algebra/">linear-algebra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/maths/">maths</a>
+            </span>
+            
+            <span>
+                <a href="/tags/philosophy/">philosophy</a>
+            </span>
+            
+            <span>
+                <a href="/tags/politics/">politics</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/tools/">tools</a>
+            </span>
+            
+            <span>
+                <a href="/tags/two-cents/">two-cents</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-intuition">0. Intuition</a></li>
+    <li><a href="#1-pointers">1. Pointers</a></li>
+    <li><a href="#2-ndarrays">2. NDArrays</a>
+      <ul>
+        <li><a href="#why-do-0-based-indices-work-better-here">Why do 0-based indices work better here?</a></li>
+        <li><a href="#a-note-on-column-vs-row-major-storage">A note on Column vs Row Major Storage</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-divide-and-conquer">3. Divide and Conquer</a></li>
+    <li><a href="#4-discretization">4. Discretization</a></li>
+    <li><a href="#5-ranges">5. Ranges</a></li>
+    <li><a href="#final-thoughts">Final Thoughts</a></li>
+  </ul>
+</nav>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2022
+                <a href="https://www.unassuming.page">Felix Benning</a>
+                
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+
+
+
+</body>
+
+</html>

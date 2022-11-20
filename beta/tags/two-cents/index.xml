@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>two-cents on unAssuming</title>
+    <link>https://www.unassuming.page/tags/two-cents/</link>
+    <description>Recent content in two-cents on unAssuming</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 04 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/tags/two-cents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Proof Assistants for Typesetting Maths</title>
+      <link>https://www.unassuming.page/blog/mathematics/proof_asssistants_for_typesetting_maths/</link>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/mathematics/proof_asssistants_for_typesetting_maths/</guid>
+      <description>I am currently trying make our exercise sheets HTML based to allow for things like drop down solutions, which start in a collapsed state. I ended up asking myself whether it might be possible yet to verify proofs submitted by students automatically. So I looked for Proof Assistants and ended up with lean. In particular I tried out the Natural Numbers Game and started reading Theorem Proving in Lean for a more comprehensive introduction.
+Landmark based Maths vs Steps in Proof Assistants The first contrast I noticed was the following. When you write down Maths for another human, you tend to write something like:</description>
+    </item>
+    
+    <item>
+      <title>Smart Quotas</title>
+      <link>https://www.unassuming.page/blog/two-cents/smart-quota/</link>
+      <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/two-cents/smart-quota/</guid>
+      <description>&lt;p&gt;While equal rights could be viewed as an issue of the past (at least in most
+developed countries), equal opportunity is still an open issue. In a free
+market wages and hiring decisions are not up to the law and thus equal rights
+are not enough to guarantee equal opportunity. While wages for equal work can
+be achieved with transparency and public pressure, it is much more difficult to
+quantify hiring discrimination. For this reason many people argue for a quota
+to actually affect these decisions with written law, so that injustices could
+be tried in court.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A Recipe for Endless War</title>
+      <link>https://www.unassuming.page/blog/two-cents/recipe_for_endless_war/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/two-cents/recipe_for_endless_war/</guid>
+      <description>&lt;p&gt;On sunday the game of the &amp;ldquo;Hooligan Eagles&amp;rdquo; against the &amp;ldquo;LesserEvil Hawks&amp;rdquo;
+is taking place. The city decided, in order to protect the police, it
+will not send in police to enforce a peaceful game. Instead, it intends to
+supply the fans of the &amp;ldquo;LesserEvil Hawks&amp;rdquo; with handguns so they can protect
+themselves against the often violent fans of the &amp;ldquo;Hooligan Eagles&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;When the referee takes one of the Hooligan Eagles players off the field for a
+foul, the camera pans to an increasingly rowdy crowd of Eagle fans close to
+the Hawks fan section.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A Better Education System</title>
+      <link>https://www.unassuming.page/blog/two-cents/better_education/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/two-cents/better_education/</guid>
+      <description>&lt;p&gt;Education is one of those topics, which everyone has an opinion on, and reforms
+are proposed every other day. In Germany it is even worse, as education is state&amp;rsquo;s
+jurisdiction, so multiply the mess by 16. So, is this just another
+proposal which claims to be much better than any others proposed before?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>There are only two colors</title>
+      <link>https://www.unassuming.page/blog/two-cents/there-are-only-two-colors/</link>
+      <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/two-cents/there-are-only-two-colors/</guid>
+      <description>&lt;p&gt;a lot of people would protest. There are of course more than two colors. For
+example &amp;ldquo;red, green, blue&amp;rdquo; are already three. Okay so maybe the statement was
+an exaggeration. How about &amp;ldquo;only 5 colors&amp;rdquo; (Red, Yellow, Green, Blue,
+Violet)? Some people might start to agree with that statement. Other people
+might list a few more. At some point words for more colors will run out. Yet
+some people would still disagree with the statement: &amp;ldquo;there are only x
+colors&amp;rdquo;. Even though we only have a finite number of words for them.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Concise Philosophy</title>
+      <link>https://www.unassuming.page/blog/two-cents/concise_philosophy/</link>
+      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/two-cents/concise_philosophy/</guid>
+      <description>&lt;h2 id=&#34;what-is&#34;&gt;What is?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I think, therefore I am - &lt;em&gt;Descartes&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We can be sure that something exists which does the thinking. You might
+now argue that abstract things like language and mathematics exist. Since a
+version of them can be part of your consciousness, which exists. But beyond
+that nothing concrete needs to exist, as thought experiments like &lt;a href=&#34;https://en.wikipedia.org/wiki/Brain_in_a_vat&#34; target=&#34;_blank&#34;&gt;Brain in a
+vat&lt;/a&gt; or &lt;a href=&#34;https://en.wikipedia.org/wiki/Boltzmann_brain&#34; target=&#34;_blank&#34;&gt;Boltzmann
+Brains&lt;/a&gt;
+prove (as they are not falsifiable you can not prove you are &lt;em&gt;not&lt;/em&gt; one
+of those, so therefore you can not prove that anything concrete &lt;em&gt;must&lt;/em&gt; exist).&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming on unAssuming</title>
+    <link>https://www.unassuming.page/tags/programming/</link>
+    <description>Recent content in programming on unAssuming</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 03 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programming in Lean</title>
+      <link>https://www.unassuming.page/blog/programming/programming-in-lean/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/programming/programming-in-lean/</guid>
+      <description>&lt;p&gt;Lean is quite a bit different from other programming languages. People familiar
+with Haskell (or other functional programming languages) might be a bit more
+comfortable  from the get go, but if you do not have that background there are
+a couple of stumbling blocks you might encounter. So I thought I would point
+out some of the gotchas I sumbled over learning this.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Intuitive Indexing</title>
+      <link>https://www.unassuming.page/blog/programming/intuitive-indexing/</link>
+      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/programming/intuitive-indexing/</guid>
+      <description>&lt;p&gt;While most programming languages use 0-based indexing &lt;a href=&#34;https://hisham.hm/2021/01/18/again-on-0-based-vs-1-based-indexing/&#34; target=&#34;_blank&#34;&gt;some people are not
+convinced&lt;/a&gt; that this is a good thing and not just the legacy of
+the language C. They argue that starting to index with one is more &lt;em&gt;intuitive&lt;/em&gt;
+than starting to index with zero, and that there is no good reason to use
+0-based indices besides pointer arithmetic which should not be of concern to
+higher level programming.&lt;/p&gt;
+&lt;p&gt;And to be fair, proponents of zero based indexing have mostly failed to provide
+a convincing argument for their preference (&lt;a href=&#34;#5-ranges&#34;&gt;Dijkstra&amp;rsquo;s range
+argument&lt;/a&gt; aside). To remedy this, I am going to present 5 arguments
+for 0-based indexing and address the intuition argument of 1-based
+indexing.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Making Of</title>
+      <link>https://www.unassuming.page/blog/programming/making-of/</link>
+      <pubDate>Thu, 01 Oct 2020 18:44:19 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/programming/making-of/</guid>
+      <description>Hugo I used Hugo (alternatives: jekyll, gatsby) to generate a static site from markdown pages.
+Theme I use the fuji theme for styling
+Github Pages You can publish to the gh_pages branch using Github actions. The website is then served by Github.</description>
+    </item>
+    
+  </channel>
+</rss>
