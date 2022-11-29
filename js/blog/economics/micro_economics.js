@@ -4143,84 +4143,82 @@
             this._callback = callback;
         }
     }
-    class PriceInput {
-        constructor(price_x, price_y, price_angle) {
-            this.plot = new Plot({ range: { x: [0, 10], y: [0, 10] }, aspect_ratio: 1 });
-            const self = this;
-            let pointerdown = false;
-            self.plot.graphs.push(function (svg) {
-                const node = svg.node();
-                self._prices = new Prices({
-                    x: 1,
-                    y: 1,
-                    callback: (p) => {
-                        updatePricePoint(self.plot, svg, p);
-                        // update text box
-                        price_x.valueAsNumber = p.x;
-                        price_y.valueAsNumber = p.y;
-                        // update slider
-                        price_angle.valueAsNumber = Math.atan(p.y / p.x);
-                        price_angle.dispatchEvent(new Event("input"));
-                    },
-                });
-                self._price_proposal = new Prices({
-                    x: 1,
-                    y: 1,
-                    callback: (p) => updateCrosshair(self.plot, svg, p),
-                });
-                // Input to Price Textbox
-                price_x.addEventListener("change", function (event) {
-                    // update Plot
-                    self._prices.x = price_x.valueAsNumber;
-                    self._price_proposal.x = self._prices.x;
-                });
-                price_y.addEventListener("change", function (event) {
-                    // update Plot
-                    self._prices.y = price_y.valueAsNumber;
-                    self._price_proposal.y = self._prices.y;
-                });
-                [price_x, price_y].forEach((p) => p.addEventListener("change", (event) => {
-                    // update Slider
-                    price_angle.valueAsNumber = Math.atan(price_y.valueAsNumber / price_x.valueAsNumber);
-                    price_angle.dispatchEvent(new Event("input"));
-                }));
-                // Input to Slider
-                price_angle.addEventListener("input", (event) => {
-                    // Update Textbox
-                    price_y.valueAsNumber =
-                        Math.round(Math.tan(price_angle.valueAsNumber) * price_x.valueAsNumber * 100) / 100;
-                    // update Plot
-                    self._prices.set({ x: price_x.valueAsNumber, y: price_y.valueAsNumber });
-                    self._price_proposal.set(self._prices.get());
-                });
-                // Input to Price Plot (updates to others are in callback)
-                node.addEventListener("pointermove", function (event) {
-                    self._price_proposal.set({
-                        x: clip(self.plot.xScale().invert(event.offsetX), 0.0001, 10),
-                        y: clip(self.plot.yScale().invert(event.offsetY), 0.0001, 10),
-                    });
-                    if (pointerdown) {
-                        self._prices.set(self._price_proposal.get());
-                        node.dispatchEvent(new Event("input"));
-                    }
-                });
-                node.addEventListener("pointerleave", function (event) {
-                    self._price_proposal.set(self._prices.get());
-                    pointerdown = false;
-                });
-                node.addEventListener("pointerdown", function (event) {
-                    pointerdown = true;
-                    self._price_proposal.set({
-                        x: clip(self.plot.xScale().invert(event.offsetX), 0.0001, 10),
-                        y: clip(self.plot.yScale().invert(event.offsetY), 0.0001, 10),
-                    });
-                    self._prices.set(self._price_proposal.get());
-                });
-                node.addEventListener("pointerup", function (event) {
-                    pointerdown = false;
-                });
+    function priceInput(priceX, priceY, priceAngle) {
+        const plot = new Plot({ range: { x: [0, 10], y: [0, 10] }, aspect_ratio: 1 });
+        let pointerdown = false;
+        plot.graphs.push(function (svg) {
+            const node = svg.node();
+            const prices = new Prices({
+                x: 1,
+                y: 1,
+                callback: (p) => {
+                    updatePricePoint(plot, svg, p);
+                    // update text box
+                    priceX.valueAsNumber = Math.round(p.x * 100) / 100;
+                    priceY.valueAsNumber = Math.round(p.y * 100) / 100;
+                    // update slider
+                    priceAngle.valueAsNumber = Math.atan(p.y / p.x);
+                    priceAngle.dispatchEvent(new Event("input"));
+                },
             });
-        }
+            const price_proposals = new Prices({
+                x: 1,
+                y: 1,
+                callback: (p) => updateCrosshair(plot, svg, p),
+            });
+            // Input to Price Textbox
+            priceX.addEventListener("change", function (event) {
+                // update Plot
+                prices.x = priceX.valueAsNumber;
+                price_proposals.x = prices.x;
+            });
+            priceY.addEventListener("change", function (event) {
+                // update Plot
+                prices.y = priceY.valueAsNumber;
+                price_proposals.y = prices.y;
+            });
+            [priceX, priceY].forEach((p) => p.addEventListener("change", (event) => {
+                // update Slider
+                priceAngle.valueAsNumber = Math.atan(priceY.valueAsNumber / priceX.valueAsNumber);
+                priceAngle.dispatchEvent(new Event("input"));
+            }));
+            // Input to Slider
+            priceAngle.addEventListener("input", (event) => {
+                // Update Textbox
+                priceY.valueAsNumber =
+                    Math.round(Math.tan(priceAngle.valueAsNumber) * priceX.valueAsNumber * 100) / 100;
+                // update Plot
+                prices.set({ x: priceX.valueAsNumber, y: priceY.valueAsNumber });
+                price_proposals.set(prices.get());
+            });
+            // Input to Price Plot (updates to others are in callback)
+            node.addEventListener("pointermove", function (event) {
+                price_proposals.set({
+                    x: clip(plot.xScale().invert(event.offsetX), 0.0001, 10),
+                    y: clip(plot.yScale().invert(event.offsetY), 0.0001, 10),
+                });
+                if (pointerdown) {
+                    prices.set(price_proposals.get());
+                    node.dispatchEvent(new Event("input"));
+                }
+            });
+            node.addEventListener("pointerleave", function (event) {
+                price_proposals.set(prices.get());
+                pointerdown = false;
+            });
+            node.addEventListener("pointerdown", function (event) {
+                pointerdown = true;
+                price_proposals.set({
+                    x: clip(plot.xScale().invert(event.offsetX), 0.0001, 10),
+                    y: clip(plot.yScale().invert(event.offsetY), 0.0001, 10),
+                });
+                prices.set(price_proposals.get());
+            });
+            node.addEventListener("pointerup", function (event) {
+                pointerdown = false;
+            });
+        });
+        return plot;
     }
 
     function plotSinglePersonEconomy(person, priceAngle) {
@@ -4253,7 +4251,7 @@
     const priceY = document.getElementById("price-y");
     const price_angle = document.getElementById("price-angle");
     // Linking the Price Inputs together
-    plotRegister.register("price-input", (new PriceInput(priceX, priceY, price_angle)).plot);
+    plotRegister.register("price-input", priceInput(priceX, priceY, price_angle));
     // Plot Single Person Economy
     const person = new Person(new CobbDouglas(randomVec(3)), randomVec(2));
     plotRegister.register("plot1", plotSinglePersonEconomy(person, price_angle));
