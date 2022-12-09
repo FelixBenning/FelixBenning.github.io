@@ -6,7 +6,19 @@
     <description>Recent content in Blogs on unAssuming</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pragmatic Positive Image of People</title>
+      <link>https://www.unassuming.page/blog/two-cents/pragmatic-positive-image-of-people/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/two-cents/pragmatic-positive-image-of-people/</guid>
+      <description>&lt;p&gt;Cynical people like to call me naive, whenever I suggest how good or neutral
+intentions could have lead to a situation where they suspect malice. But naivety
+implies there would be no thought behind assuming best intentions, just lack of
+experience. And this is not the case.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Microeconomics 101</title>
       <link>https://www.unassuming.page/blog/economics/micro_economics/</link>
@@ -269,26 +281,6 @@ such an algorithm, you can make statements about the result.&lt;/p&gt;</descript
     </item>
     
     <item>
-      <title>Concise Philosophy</title>
-      <link>https://www.unassuming.page/blog/two-cents/concise_philosophy/</link>
-      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.unassuming.page/blog/two-cents/concise_philosophy/</guid>
-      <description>&lt;h2 id=&#34;what-is&#34;&gt;What is?&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;I think, therefore I am - &lt;em&gt;Descartes&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;We can be sure that something exists which does the thinking. You might
-now argue that abstract things like language and mathematics exist. Since a
-version of them can be part of your consciousness, which exists. But beyond
-that nothing concrete needs to exist, as thought experiments like &lt;a href=&#34;https://en.wikipedia.org/wiki/Brain_in_a_vat&#34; target=&#34;_blank&#34;&gt;Brain in a
-vat&lt;/a&gt; or &lt;a href=&#34;https://en.wikipedia.org/wiki/Boltzmann_brain&#34; target=&#34;_blank&#34;&gt;Boltzmann
-Brains&lt;/a&gt;
-prove (as they are not falsifiable you can not prove you are &lt;em&gt;not&lt;/em&gt; one
-of those, so therefore you can not prove that anything concrete &lt;em&gt;must&lt;/em&gt; exist).&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Intuitive Indexing</title>
       <link>https://www.unassuming.page/blog/programming/intuitive-indexing/</link>
       <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
@@ -305,6 +297,16 @@ a convincing argument for their preference (&lt;a href=&#34;#5-ranges&#34;&gt;Di
 argument&lt;/a&gt; aside). To remedy this, I am going to present 5 arguments
 for 0-based indexing and address the intuition argument of 1-based
 indexing.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My Philosophical Foundation</title>
+      <link>https://www.unassuming.page/blog/two-cents/philosophy-foundation/</link>
+      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/two-cents/philosophy-foundation/</guid>
+      <description>&lt;p&gt;It seems fitting that the first article of a blog should layout the foundation
+of my beliefs. So&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
