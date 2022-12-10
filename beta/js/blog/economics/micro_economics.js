@@ -4153,12 +4153,6 @@
                 y: 1,
                 callback: (p) => {
                     updatePricePoint(plot, svg, p);
-                    // update text box
-                    priceX.valueAsNumber = Math.round(p.x * 100) / 100;
-                    priceY.valueAsNumber = Math.round(p.y * 100) / 100;
-                    // update slider
-                    priceAngle.valueAsNumber = Math.atan(p.y / p.x);
-                    priceAngle.dispatchEvent(new Event("input"));
                 },
             });
             const price_proposals = new Prices({
@@ -4191,7 +4185,15 @@
                 prices.set({ x: priceX.valueAsNumber, y: priceY.valueAsNumber });
                 price_proposals.set(prices.get());
             });
-            // Input to Price Plot (updates to others are in callback)
+            function update_others(p) {
+                // update text box
+                priceX.valueAsNumber = Math.round(p.x * 100) / 100;
+                priceY.valueAsNumber = Math.round(p.y * 100) / 100;
+                // update slider
+                priceAngle.valueAsNumber = Math.atan(p.y / p.x);
+                priceAngle.dispatchEvent(new Event("input"));
+            }
+            // Input to Price Plot
             node.addEventListener("pointermove", function (event) {
                 price_proposals.set({
                     x: clip(plot.xScale().invert(event.offsetX), 0.0001, 10),
@@ -4199,6 +4201,7 @@
                 });
                 if (pointerdown) {
                     prices.set(price_proposals.get());
+                    update_others(prices);
                     node.dispatchEvent(new Event("input"));
                 }
             });
@@ -4213,6 +4216,7 @@
                     y: clip(plot.yScale().invert(event.offsetY), 0.0001, 10),
                 });
                 prices.set(price_proposals.get());
+                update_others(prices.get());
             });
             node.addEventListener("pointerup", function (event) {
                 pointerdown = false;
