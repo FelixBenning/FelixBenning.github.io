@@ -4080,7 +4080,7 @@
         }, on);
     }
 
-    function plotDemandSupply(good = 0, person) {
+    function plotDemandSupply(good = 0, price_angle, person) {
         const plot = new Plot({ aspect_ratio: 0.7 });
         const data = [...Array(200).keys()].map(x => (x + 1) * 1.5 / 200).map(p_angle => {
             const { demand, supply } = person.decision([Math.tan(p_angle), 1]);
@@ -4089,6 +4089,21 @@
         });
         add_line(plot, data.filter(x => x.demand <= 1).map((x => [x.price, x.demand])));
         add_line(plot, data.map((x => [x.price, x.supply])));
+        add_interactive_element(plot, [price_angle], (svg, inArray) => {
+            const p_angle = inArray[0];
+            const { demand, supply } = person.decision([Math.tan(p_angle), 1]);
+            const supply_number = (supply.find(s => s.productIdx == good) || { potential_output: 0 }).potential_output;
+            const points = [[p_angle, demand[good]], [p_angle, supply_number]];
+            svg.selectAll("path#surplus")
+                .data([points], d => d[0][0])
+                .join("path")
+                .attr("id", "surplus")
+                .attr("fill", "none")
+                .attr("stroke", ((supply_number > demand[good]) ? "var(--graph-green)" : "var(--graph-red)"))
+                .attr("d", line()
+                .x((d) => plot.xScale()(d[0]))
+                .y((d) => plot.yScale()(d[1])));
+        });
         return plot;
     }
 
@@ -4100,7 +4115,7 @@
             .attr("cx", (d) => plot.xScale()(d.x))
             .attr("cy", (d) => plot.yScale()(d.y))
             .attr("r", 3)
-            .attr("class", "fill-color-1");
+            .attr("fill", "var(--graph-green)");
     }
     function updateCrosshair(plot, svg, prices) {
         const xCrosshair = [[0, prices.y], [10, prices.y]];
@@ -4109,7 +4124,8 @@
             .data([xCrosshair, yCrosshair], p => p[0])
             .join("path")
             .lower()
-            .attr("class", "graph-mute crosshair")
+            .attr("class", "crosshair")
+            .attr("stroke", "var(--color-mute)")
             .attr("fill", "none")
             .attr("d", line()
             .x((d) => plot.xScale()(d[0]))
@@ -4260,8 +4276,8 @@
     const person = new Person(new CobbDouglas(randomVec(3)), randomVec(2));
     plotRegister.register("plot1", plotSinglePersonEconomy(person, price_angle));
     // Plot Demand
-    plotRegister.register("demand-1", plotDemandSupply(0, person));
-    plotRegister.register("demand-2", plotDemandSupply(1, person));
+    plotRegister.register("demand-1", plotDemandSupply(0, price_angle, person));
+    plotRegister.register("demand-2", plotDemandSupply(1, price_angle, person));
     plotRegister.draw();
 
 }));
