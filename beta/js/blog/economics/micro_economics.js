@@ -3272,13 +3272,6 @@
       }
     }
 
-    function path() {
-      return new Path;
-    }
-
-    // Allow instanceof d3.path
-    path.prototype = Path.prototype;
-
     function formatDecimal(x) {
       return Math.abs(x = Math.round(x)) >= 1e21
           ? x.toLocaleString("en").replace(/,/g, "")
@@ -3845,6 +3838,24 @@
       };
     }
 
+    function withPath(shape) {
+      let digits = 3;
+
+      shape.digits = function(_) {
+        if (!arguments.length) return digits;
+        if (_ == null) {
+          digits = null;
+        } else {
+          const d = Math.floor(_);
+          if (!(d >= 0)) throw new RangeError(`invalid digits: ${_}`);
+          digits = d;
+        }
+        return shape;
+      };
+
+      return () => new Path(digits);
+    }
+
     function array(x) {
       return typeof x === "object" && "length" in x
         ? x // Array, TypedArray, NodeList, array-like
@@ -3895,7 +3906,8 @@
       var defined = constant(true),
           context = null,
           curve = curveLinear,
-          output = null;
+          output = null,
+          path = withPath(line);
 
       x$1 = typeof x$1 === "function" ? x$1 : (x$1 === undefined) ? x : constant(x$1);
       y$1 = typeof y$1 === "function" ? y$1 : (y$1 === undefined) ? y : constant(y$1);
