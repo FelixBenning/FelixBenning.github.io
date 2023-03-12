@@ -6,7 +6,21 @@
     <description>Recent content in programming on unAssuming</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.unassuming.page/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Version Control with Git</title>
+      <link>https://www.unassuming.page/blog/programming/git/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.unassuming.page/blog/programming/git/</guid>
+      <description>&lt;p&gt;When choosing a programming language or database, there are so many options to
+choose from. And people regularly create new options since they are not happy
+with the existing ones. But for version control, there exists essentially just
+one option: &lt;code&gt;Git&lt;/code&gt;. And while it takes some getting used to, it must do something
+right, if nobody wants to spend the effort to improve upon it. This is a
+small introduction.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Programming in Lean</title>
       <link>https://www.unassuming.page/blog/programming/programming-in-lean/</link>
