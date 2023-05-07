@@ -4,7 +4,32 @@
   
   <url>
     <loc>https://www.unassuming.page/blog/</loc>
-    <lastmod>2023-03-12T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.unassuming.page/tags/economics/</loc>
+    <lastmod>2023-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.unassuming.page/blog/economics/livable-cities-vs-cars/</loc>
+    <lastmod>2023-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.unassuming.page/tags/</loc>
+    <lastmod>2023-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.unassuming.page/tags/two-cents/</loc>
+    <lastmod>2023-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.unassuming.page/</loc>
+    <lastmod>2023-05-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,23 +38,8 @@
   </url>
   
   <url>
-    <loc>https://www.unassuming.page/tags/</loc>
-    <lastmod>2023-03-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.unassuming.page/</loc>
-    <lastmod>2023-03-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.unassuming.page/blog/programming/git/</loc>
     <lastmod>2023-03-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.unassuming.page/tags/maths/</loc>
-    <lastmod>2022-12-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -43,16 +53,6 @@
   </url>
   
   <url>
-    <loc>https://www.unassuming.page/tags/two-cents/</loc>
-    <lastmod>2022-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.unassuming.page/tags/economics/</loc>
-    <lastmod>2022-11-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.unassuming.page/tags/education/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
   </url>
@@ -60,6 +60,11 @@
   <url>
     <loc>https://www.unassuming.page/blog/economics/micro_economics/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.unassuming.page/tags/maths/</loc>
+    <lastmod>2022-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
